@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Notes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+</head>
+<style>
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Blinker', Helvetica,Arial,Lucida,sans-ser
+}
+header {
+  border-bottom: 1px dotted #999;
+  z-index: 999;
+}
+.top-cap {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDBweCIgdmlld0JveD0iMCAwIDEyODAgMTQwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGZpbGw9IiNmZmZmZmYiPjxwYXRoIGQ9Ik0xMjgwIDE0MFYwSDBsMTI4MCAxNDB6Ii8+PC9nPjwvc3ZnPg==);
+    background-size: 100% 30px;
+    top: 0;
+    height: 30px;
+    z-index: 1;
+    transform: scale(1, 1);
+}
+.cap-50 {
+    background-size: 100% 50px;
+    height: 50px;
+}
+.bottom-cap {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDBweCIgdmlld0JveD0iMCAwIDEyODAgMTQwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGZpbGw9IiNmZmZmZmYiPjxwYXRoIGQ9Ik0wIDB2MTQwaDEyODBMMCAweiIgZmlsbC1vcGFjaXR5PSIuNSIvPjxwYXRoIGQ9Ik0wIDQydjk4aDEyODBMMCA0MnoiLz48L2c+PC9zdmc+);
+    background-size: 100% 60px;
+    bottom: 0;
+    height: 60px;
+    z-index: 1;
+    transform: scale(1,1);
+}
+.reverse-cap {
+    transform: scale(-1,1);
+}
+
+#hero {
+}
+
+#hero + .bottom-cap {
+  height: 15px;
+  background-size: 34.3333% 15px;
+}
+
+span.mark {
+  position:relative;
+  padding: 5px 3px 0px 5px;
+  margin-right: 1px;
+}
+
+span.mark:before {
+  content:"";
+  z-index: 1;
+  left: 0em;
+  top: 0em;
+  border-width: 2px;
+  border-style: solid;
+  border-color: green;
+  position: absolute;
+  border-right-color: transparent;
+  width: 100%;
+  height: 2em;
+  transform: rotate(1.2deg);
+  opacity: 0.5;
+  border-radius: 50%;
+  padding: 0.1em 0.25em;
+}
+
+span.mark:after {
+  content: "";
+  z-index: 4;
+  left: 0.25em;
+  top: 0.1em;
+  padding: 0.1em 0.25em;
+  border-width: 2px;
+  border-style: solid;
+  border-color: green;
+  border-left-color: transparent;
+  border-top-color: transparent;
+  position: absolute;
+  width: 100%;
+  height: 2em;
+  transform: rotate(-0.75deg);
+  opacity: 0.5;
+  border-radius: 50%;
+}
+</style>
+<body class="bg-gray-198 flex flex-col h-screen">
+<div class="min-h-screen flex flex-col">
+    <!--Start of Header section with Logo and Navigation Menu-->
+    <header class="w-full bg-white py-2 sticky top-0">
+        <div class="container mx-auto flex justify-between items-center px-6">
+            <div>
+              <a href="#" class="text-sky-700 text-2xl font-bold">Ronnie Miller</a>
+              <span class="text-slate-500 text-sm font-bold hidden sm:inline">Software Developer</span>
+            </div>
+            <!-- Navigation Links -->
+            <nav>
+                <ul class="inline-flex">
+                    <li><a href="#" class="px-4 text-blue-500 hover:text-black">Notes</a></li>
+                    <li><a href="#" class="px-4 text-blue-200 hover:text-black">About</a></li>
+                    <li><a href="#" class="px-4 text-blue-200 hover:text-black">Resume</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!--Start of Body Content-->
+    <main class="flex-grow bg-white">
+        <!-- Hero Header -->
+        <section id="hero" class="hero bg-sky-800 text-white text-center pt-12 pb-12">
+            <h1 class="text-4xl mb-2"><span title="Wave">👋</span> Hello World <span title="World">🌎</span></h1>
+            <p class="text-lg">You've stumbled upon my little corner of the web.</p>
+        </section>
+        <div class="bg-slate-800 bottom-cap reverse-cap mb-10"></div>
+        <!-- Hero Header -->
+
+        <h3 class="text-4xl px-5 py-5 mb-2">Field Notes</h3>
+        <div class="bg-slate-200 top-cap"></div>
+        <section class="py-8 px-6 bg-slate-200">
+            <h2 class="text-2xl font-bold mb-2">Upgrading a Rust Project</h2>
+            <p class="text-gray-700 mb-5">I was having an issue when upgrading a Rust project from 1.46 to 1.65. The motivation for the upgrade was only to have a working build for Mac M1/M2...</p>
+            <a href="#" class="text-sky-500 hover:text-blue-700 underline">Read More</a>
+        </section>
+        <div class="bg-slate-200 bottom-cap"></div>
+        <section class="py-8 px-6 bg-white">
+            <h2 class="text-3xl font-bold mb-2">Another Note Title</h2>
+            <p class="text-gray-700 mb-5">Summary of the note goes here.</p>
+            <a href="#" class="text-blue-500 hover:text-blue-700 underline">Read More</a>
+        </section>
+        <div class="bg-green-100 top-cap reverse-cap"></div>
+        <section class="py-8 px-6 bg-green-100">
+            <h2 class="text-2xl font-bold mb-2 text-green-900">Upgrading a Rust Project</h2>
+            <p class="text-green-900 mb-5">I was having an issue when upgrading a Rust project from 1.46 to 1.65. The motivation for the upgrade was only to have a working build for Mac M1/M2...</p>
+            <a href="#" class="text-blue-500 hover:text-blue-700 underline">Read More</a>
+        </section>
+        <div class="bg-green-100 bottom-cap reverse-cap mb-10"></div>
+
+
+        <!-- Hire CTA -->
+
+        <div class="bg-stone-300 top-cap"></div>
+        <section class="py-8 px-6 bg-stone-300 text-center">
+            <h2 class="text-2xl font-bold mb-2 text-stone-800">Consultation Available</h2>
+            <p class="text-stone-900 mb-2">I am <span class="mark">onboarding clients now</span> for custom software development and consultation services.</p>
+            <p class="text-stone-900 mb-3">I can help your organization <em>decide between build vs buy</em>, <em>level-up your engineering team</em>, or <em>adopt the cloud</em>.</p>
+            <h2 class="text-md font-bold mb-2 text-stone-800">Here are some other things I'm <em>really good</em> at:</h2>
+<!-- 2 Column Grid -->
+<div class="container mx-auto px-10 md:px-20 lg:px-40 py-8 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
+  <!-- Card 1 -->
+  <div class="bg-stone-100 shadow rounded-sm p-6 text-center hover:bg-stone-50">
+    <h3 class="text-stone-900 font-bold mb-2">Ruby on Rails</h3>
+    <p class="text-stone-700">I've been building and maintaining Ruby on Rails applications for 15 years. Back then, I started on Rails version 2.1. I've since upgraded many Rails applications from old versions.</p>
+  </div>
+  <!-- Card 2 -->
+  <div class="bg-stone-100 shadow rounded-sm p-6 text-center hover:bg-stone-50">
+    <h3 class="text-stone-900 font-bold mb-2">Automation</h3>
+    <p class="text-stone-700">I love automating. My rule of thumb for when to automate: If something is done more than once it should be a script. If it's done more than twice a week it should be automatic.</p>
+  </div>
+  <!-- Card 1 -->
+  <div class="bg-stone-100 shadow rounded-sm p-6 text-center hover:bg-stone-50">
+    <h3 class="text-stone-900 font-bold mb-2">Software as a Service (SaaS)</h3>
+    <p class="text-stone-700">I started building Software as a Service applications in 2003. Clients have hired me to build everything from automotive scheduling systems, to payroll and timecard systems, to training and education programs.</p>
+  </div>
+  <!-- Card 2 -->
+  <div class="bg-stone-100 shadow rounded-sm p-6 text-center hover:bg-stone-50">
+    <h3 class="text-stone-900 font-bold mb-2">Production On-Call Support</h3>
+    <p class="text-stone-700">I've supported production applications, with real users since my earliest days of writing code. I strive to build resilient, reliable software systems. From development all the way to production.</p>
+  </div>
+</div>
+<!-- <div class="container mx&#45;auto mt&#45;4 text&#45;center"> -->
+<!--   <a href="#" class="text&#45;stone&#45;600 hover:text&#45;slate&#45;800 hover:underline">Learn More</a> -->
+<!-- </div> -->
+        </section>
+        <div class="bg-stone-300 bottom-cap mb-10"></div>
+
+    </main>
+    <!--Start of Footer-->
+
+        <footer class="py-0 pb-10 bg-gray-800 text-left text-gray-200">
+          <div class="bg-gray-800 top-cap cap-50"></div>
+          <section class="hero bg-gray-800 text-left pt-12 pb-8 px-10 sm:px-5">
+
+            <div class="px-10">
+              <p class="text-md mb-0">Ronnie is a product-minded software engineer located in the Pacific Northwest.</p>
+              <p class="text-md mb-0">He loves finding creative technical solutions that center on a delightful user experience.</p>
+              <p class="text-md mb-0">You should hire him for your next project.</p>
+              <p class="text-md mb-8">Visit <a href="https://buildtest.run" class="text-orange-400 hover:text-orange-200 hover:underline">BuildTestRun</a> for inquiries.</p>
+              <div class="flex flex-cols space-x-8 mb-4">
+                <a href="#" class="hover:text-orange-200"><i class="fa-brands fa-github-alt"></i> GitHub</a>
+                <a href="#" class="hover:text-orange-200"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                <a href="#" class="hover:text-orange-200"><i class="fa-solid fa-square-rss"></i> RSS</a>
+              </div>
+              <p class="float-left text-sm mt-5 text-slate-500 align-text-bottom grayscale hover:grayscale-0">
+                Crafted with
+                <span class="text-xs">❤️</span>
+                in Milwaukie OR, USA
+              </p>
+            </div>
+
+          </section>
+    </footer>
+</div>
+</html>
