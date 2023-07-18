@@ -30,7 +30,7 @@
 
 table.highlighttable, .highlight, .highlight pre {
   border-radius: 5px;
-  background: #2B2B2B;
+  background: theme('colors.gray.50');
   width: 100%;
   padding: 0;
 }
@@ -41,7 +41,7 @@ table.highlighttable, .highlight, .highlight pre {
 
 .highlighttable pre {
   line-height: 1.3em;
-  color: #888;
+  color: theme('colors.gray.50');
   padding: 0;
   margin: 0;
 }
@@ -64,8 +64,8 @@ table.highlighttable, .highlight, .highlight pre {
 :not(pre) > code {
   border-radius: 4px;
   border: 1px solid #a0a0a0;
-  background: $darker-gray;
-  color: $font-color;
+  background: theme('colors.gray.900') !important;
+  color: theme('colors.gray.50') !important;
 
   margin: 0 1px 0 2px;
   padding: 3px 5px 3px 6px;
@@ -75,43 +75,39 @@ table.highlighttable, .highlight, .highlight pre {
 
 figure {
   margin: 0px;
+}
 
-  code {
-    table {
-      margin-bottom: 0px;
+figure code table {
+  margin-bottom: 0px;
+}
 
-      td.gutter, pre {
-        padding: 0px;
-        margin: 0px;
-      }
+figure code table td.gutter, figure code table pre {
+  padding: 0px;
+  margin: 0px;
+}
 
-      td.gutter {
-        padding-right: 15px;
-        border: none;
-      }
-    }
-  }
+figure code table td.gutter {
+  padding-right: 15px;
+  border: none;
+}
 
-  code, pre, span {
-    font-family: Monaco, Consolas, monospace;
-    font-size: 14px;
-  }
+figure code, figure pre, figure span {
+  font-family: Monaco, Consolas, monospace;
+  font-size: 14px;
+}
 
-  figcaption + table.highlighttable {
-    margin-top: 10px;
-  }
+figure figcaption + table.highlighttable {
+  margin-top: 10px;
+}
 
-  &.vscroll {
-    .highlight code {
-      max-height: 250px;
-    }
+figure.vscroll .highlight code {
+  max-height: 250px;
+}
 
-    .highlight code:after {
-      line-height: 10px;
-      display: block;
-      content: "\A";
-    }
-  }
+figure.vscroll .highlight code:after {
+  line-height: 10px;
+  display: block;
+  content: "\A";
 }
 
 figcaption {
@@ -122,13 +118,13 @@ figcaption {
   color: #888;
 }
 
-@media (max-width: $larger-than-tablet) {
-  td.code {
-    max-width: $larger-than-tablet - $larger-than-phablet;
-  }
-
-  code {
-    word-wrap: nowrap !important;
-    display: inline-block;
-  }
-}
+// @media (max-width: $larger-than-tablet) {
+//   td.code {
+//     max-width: $larger-than-tablet - $larger-than-phablet;
+//   }
+//
+//   code {
+//     word-wrap: nowrap !important;
+//     display: inline-block;
+//   }
+// }

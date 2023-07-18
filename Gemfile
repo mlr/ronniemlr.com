@@ -9,4 +9,5 @@ gem 'rake'
 
 group :jekyll_plugins do
   gem 'jekyll-livereload'
+  gem 'jekyll-postcss-v2'
 end

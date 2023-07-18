@@ -1,7 +1,8 @@
 {% capture post_slug %}{{ page.url | remove_first:'/' | split:'/' | last }}{% endcapture %}
 {% include header.html %}
-    <div id="content" class="blog-post {{post_slug}}">
-      <h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
+  <!-- Hero Header -->
+  <section id="hero" class="hero bg-sky-700 text-white text-center p-5 pt-12 pb-8">
+      <h1 class="text-4xl mb-2"><a href="{{ page.url }}">{{ page.title }}</a></h1>
       {% if page.subtitle %}
         <h3>{{ page.subtitle }}</h3>
       {% endif %}
@@ -22,7 +23,12 @@
           {{ page.date | date: "%Y" }}
         </div>
       </div>
+  </section>
+  <div class="bg-sky-700 bottom-cap reverse-cap mb-10"></div>
+  <!-- Hero Header -->
 
+  <div id="content" class="blog-post {{post_slug}}">
+    <article class="mx-auto px-10 pb-8 prose prose-slate prose-md">
       <div class="post-content">
         {% if page.image %}
           {% assign paragraphs = content | split: '</p>' %}
@@ -42,5 +48,6 @@
           {{ content }}
         {% endif %}
       </div>
-    </div>
+    </article>
+  </div>
 {% include footer.html %}

@@ -11,6 +11,7 @@ redirects: yes
 feed:
   path: atom.xml
 plugins:
+  - jekyll-postcss-v2
   - jekyll-emoji
   - jekyll-feed
 exclude:
@@ -31,3 +32,5 @@ defaults:
       type: "posts"
     values:
       layout: blog
+postcss:
+  cache: false
