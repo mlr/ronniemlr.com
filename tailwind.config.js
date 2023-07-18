@@ -8,8 +8,14 @@ module.exports = {
     './*.html',
   ],
   theme: {
-    theme: {
-      extend: {},
+    extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: '80ch',
+          }
+        }
+      }
     },
   },
   plugins: [
