@@ -17,8 +17,14 @@
   }
 }
 
+nav {
+  li.active {
+    @apply text-sky-700;
+  }
+}
+
 h1,h2,h3,h4,h5,h6 {
-  font-family: 'Blinker', Helvetica,Arial,Lucida,sans-ser
+  font-family: 'Blinker', Helvetica,Arial,Lucida,sans-serif;
 }
 
 header {
@@ -54,14 +60,14 @@ header {
 }
 
 #hero {
-  border-bottom-left-radius: 65% 15%;
-  border-bottom-right-radius: 65% 15%;
+  // border-bottom-left-radius: 65% 15%;
+  // border-bottom-right-radius: 65% 15%;
   background-size: 100% 50px;
   box-shadow: 0px 5px 0px theme('colors.slate.300');
 }
 
 #hero h1 {
-  margin-top: 25px;
+ // margin-top: 25px;
 }
 
 #hero + .bottom-cap {
@@ -116,4 +122,8 @@ span.mark:after {
   transform: rotate(-0.75deg);
   opacity: 0.5;
   border-radius: 50%;
+}
+
+div#content {
+
 }

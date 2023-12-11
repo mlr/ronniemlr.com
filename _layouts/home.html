@@ -1,7 +1,5 @@
 {% include header.html %}
   <div id="content" class="page {{ page.name | split: '.' | first }}">
-    <article class="mx-auto px-8 pb-8 prose prose-slate prose-md md:prose-lg">
-      {{ content }}
-    </article>
+    {{ content }}
   </div>
 {% include footer.html %}
