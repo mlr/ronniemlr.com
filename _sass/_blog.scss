@@ -1,3 +1,31 @@
+.post-image {
+  margin: 30px auto;
+  max-width: 614px;
+  position: relative;
+  left: -20px;
+
+  &.post-image-float-right {
+    left: auto;
+    width: 40%;
+    float: right;
+    margin: -10px 0px 40px 40px;
+  }
+
+  &.post-image-float-left {
+    left: auto;
+    width: 40%;
+    float: left;
+    margin: -10px 40px 40px 0px;
+  }
+
+  img {
+    width: 100%;
+    margin: 15px;
+    margin-bottom: 25px;
+    margin-left: 0px;
+  }
+}
+
 #content {
   ol, ul {
     margin-left: 15px;

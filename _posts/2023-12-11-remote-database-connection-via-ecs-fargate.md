@@ -3,18 +3,20 @@ title: Remote Database Connection via ECS Fargate
 description: Learn how to set up IAM permissions and use ecsta for port forwarding to connect to a remote database via ECS for backup or local development.
 keywords: IAM Permissions, ECS, ecsta, Port Forwarding, Remote Database, Backup, Local Development
 tags: AWS, ECS Fargate, SSM
+image: /images/banner/remote-database-connection-via-ecs-fargate.png
+image_insert_order: 2 # number of paragraphs after which the image will be inserted
 ---
 
 In [a previous
 post](/2023/07/08/execute-pg-dump-against-remote-database/)
 I wrote about using an SSH tunnel to perform a `pg_dump` on a remote database.
-One issue with that approach is it requires modifying the security group of an
+That approach required modifying the security group of an
 EC2 instance to allow SSH traffic and act as the bastion or jump host.
 
-That can be a hassle and potentially not allowed for security reasons.
+Modifying security groups can be burdensome and may not be allowed for security reasons.
 
-Another shortcoming of this approach is it doesn't really work well with ECS
-where the IP address of your bastion or jump host may not be very static.
+Another shortcoming of this approach is it doesn't really work well with ECS (Elastic
+Container Service) where the IP address of your bastion host may not be static.
 
 Luckily the same thing can be accomplished using AWS Systems Manager.
 

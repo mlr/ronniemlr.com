@@ -24,7 +24,23 @@
       </div>
 
       <div class="post-content">
-        {{ content }}
+        {% if page.image %}
+          {% assign paragraphs = content | split: '</p>' %}
+          {% assign insert_after = page.image_insert_order | default: 1 %}
+          {% for paragraph in paragraphs limit:insert_after %}
+            {{ paragraph }}</p>
+          {% endfor %}
+
+          <div class="post-image{% if page.image_float_position %} post-image-float-{{ page.image_float_position }}{% endif %}">
+            <img src="{{ page.image }}" alt="{{ page.title }}" width="512" />
+          </div>
+
+          {% for paragraph in paragraphs offset:insert_after %}
+            {{ paragraph }}</p>
+          {% endfor %}
+        {% else %}
+          {{ content }}
+        {% endif %}
       </div>
     </div>
 

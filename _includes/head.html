@@ -5,7 +5,7 @@
   <meta name="keywords" content="{% if page.keywords %}{{ page.keywords | strip_newlines }}, {% endif %}{{ site.keywords }}" />
   <meta property="og:title" content="{% if page.title %}{{ page.title }} - {% endif %}Ronnie Miller - Software Developer">
   <meta property="og:description" content="{% if page.description %}{{ page.description | strip_newlines }} - {% endif %}{{ site.description }}">
-  <meta property="og:image" content="https://ronniemlr.com/images/me.jpg">
+  <meta property="og:image" content={{ site.baseurl }}{% if page.image %}{{ page.image }}{% else %}/images/me.jpg{% endif %}">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>{% if page.title %}{{ page.title }} - {% endif %}Ronnie Miller - Software Developer</title>
   <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/screen.css" />
