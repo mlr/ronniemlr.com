@@ -1,6 +1,10 @@
 ---
 title: Execute pg_dump against a remote database
+description: Learn how to securely run `pg_dump` against a remote PostgreSQL database using an SSH tunnel.
+keywords: postgresql, ssh, tunnel, runbook
 tags: postgresql, ssh, tunnel, runbook
+image: /images/banner/executing-pg-dump-against-a-remote-database.png
+image_insert_order: 2 # number of paragraphs after which the image will be inserted
 ---
 
 You may run into a situation where you need to grab a backup of a remotely
