@@ -1,14 +1,14 @@
     </main>
     <!--Start of Footer-->
 
-        <footer class="py-0 pb-10 bg-slate-800 text-left text-gray-200">
-          <div class="bg-slate-800 top-cap cap-50"></div>
-          <section class="hero bg-slate-800 text-left pt-12 pb-8 px-10 sm:px-5">
+        <footer class="py-0 pb-10 bg-slate-800 dark:bg-slate-950 text-left text-gray-200">
+          <div class="bg-slate-800 dark:bg-slate-950 top-cap cap-50"></div>
+          <section class="hero bg-slate-800 dark:bg-slate-950 text-left pt-12 pb-8 px-10 sm:px-5">
 
             <div class="px-10">
 
               {% include about.html %}
-              <p class="float-left text-sm mt-1 text-slate-500 align-text-bottom grayscale hover:grayscale-0">
+              <p class="float-left text-sm mt-1 text-slate-500 dark:text-slate-400 align-text-bottom grayscale hover:grayscale-0">
                 Hand crafted with
                 <span class="text-xs">❤️</span>
                 in Milwaukie OR, USA
@@ -17,6 +17,16 @@
 
           </section>
     </footer>
-</div>
-{% include google_ga.html %}
-</html>
+    </div>
+    {% include google_ga.html %}
+    <script src="{{ site.baseurl }}/assets/js/theme-switcher.js"></script>
+    <script>
+      console.log("Footer script loaded");
+      // Force theme re-initialization
+      setTimeout(function() {
+        if (window.initializeTheme) {
+          window.initializeTheme();
+        }
+      }, 100);
+    </script>
+    </html>

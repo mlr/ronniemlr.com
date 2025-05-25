@@ -1,0 +1,79 @@
+<div id="theme-switcher" class="relative flex items-center ml-3 bg-gray-100 dark:bg-slate-700 rounded-full p-1 border border-gray-200 dark:border-slate-600">
+  <button 
+    id="theme-toggle-system" 
+    aria-label="Use system theme setting"
+    class="theme-toggle-btn p-2 rounded-full transition-all duration-200 hover:bg-white dark:hover:bg-slate-600 relative"
+    title="Use system theme">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+    </svg>
+    <span class="sr-only">System</span>
+  </button>
+  <button 
+    id="theme-toggle-dark" 
+    aria-label="Use dark theme"
+    class="theme-toggle-btn p-2 rounded-full transition-all duration-200 hover:bg-white dark:hover:bg-slate-600 relative" 
+    title="Switch to dark theme">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+    </svg>
+    <span class="sr-only">Dark</span>
+  </button>
+  <button 
+    id="theme-toggle-light" 
+    aria-label="Use light theme"
+    class="theme-toggle-btn p-2 rounded-full transition-all duration-200 hover:bg-white dark:hover:bg-slate-600 relative" 
+    title="Switch to light theme">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+    </svg>
+    <span class="sr-only">Light</span>
+  </button>
+  
+  <!-- Debug helper -->
+  <span id="theme-debug" class="hidden absolute -bottom-6 right-0 text-xs text-slate-500"></span>
+</div>
+
+<style>
+  .theme-toggle-btn {
+    position: relative;
+    z-index: 1;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .theme-toggle-btn.active {
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    transform: scale(1.1);
+  }
+  .dark .theme-toggle-btn.active {
+    background-color: #334155; /* slate-700 */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  }
+  .theme-toggle-btn.active svg {
+    color: #0369a1 !important; /* sky-700 */
+  }
+  .dark .theme-toggle-btn.active svg {
+    color: #38bdf8 !important; /* sky-400 */
+  }
+  
+  /* Add a small dot indicator on active button */
+  .theme-toggle-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #0369a1; /* sky-700 */
+  }
+  
+  .dark .theme-toggle-btn.active::after {
+    background-color: #38bdf8; /* sky-400 */
+  }
+</style>

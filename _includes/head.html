@@ -10,8 +10,44 @@
 <title>{% if page.title %}{{ page.title }} - {% endif %}Ronnie Miller - Software Developer</title>
 <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/screen.css" />
 <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/print.css" media="print" />
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.2/dist/tailwind.min.css" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
+<script>
+  // Configure Tailwind darkMode with the CDN
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        typography: {
+          DEFAULT: {
+            css: {
+              maxWidth: '80ch',
+            }
+          }
+        }
+      }
+    }
+  }
+</script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/screen.css" />
 <!-- <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/print.css" media="print" /> -->
+<!-- Initialize dark mode -->
+<script>
+  // On page load, set initial theme to prevent flash of unstyled content (FOUC)
+  (function() {
+    const theme = localStorage.getItem('theme');
+    
+    // If user has explicitly set a theme, use that
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else if (theme === 'light') {
+      document.documentElement.classList.remove('dark');
+    } else {
+      // No explicit preference, use system preference
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    }
+  })();
+</script>

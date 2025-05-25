@@ -1,85 +1,118 @@
-#wrapper.resume {
-  header, #about-me, footer {
-    display: none;
-  }
-}
+/* Updated styles for the resume page */
 
 #content.page.resume {
-  font-size: 0.95em;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  /* Base styles for the resume page container */
+  max-width: 900px;
+  margin: 2rem auto;
 
-  p {
-    width: 100%;
-  }
+  /* Custom print styles for resume */
+  @media print {
+    font-size: 12pt;
 
-  div#contact-info + p {
-    margin-bottom: 40px;
-  }
+    a {
+      text-decoration: none;
+      color: #000;
+    }
 
-  #name {
+    .border-l-4 {
+      border-left-width: 1px !important;
+    }
+
+    h1, h2, h3, h4 {
+      break-after: avoid;
+      margin-top: 0;
+    }
+
     h1 {
-      margin-top: 0px;
-      margin-bottom: 5px;
+      font-size: 20pt;
     }
 
-    a {
-      color: $font-color;
+    h2 {
+      font-size: 16pt;
+    }
+
+    h3 {
+      font-size: 14pt;
+    }
+
+    li {
+      break-inside: avoid;
+    }
+
+    .my-8, .my-10 {
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .bg-slate-100,
+    .dark .bg-slate-800 {
+      background-color: white !important;
+      border: 1px solid #eee;
     }
   }
 
-  #contact-info {
-    font-size: 1.1em;
-
-    ol {
-      padding: 0px;
-      margin: 0px;
-      margin-bottom: 25px;
-
-      li {
-        margin-left: 0px;
-        list-style: none;
-      }
-    }
-
-    a {
-      font-size: 0.9em;
-    }
+  /* Remove top margins from headings when inside containers */
+  .border-l-4 h3,
+  .bg-slate-100 h2,
+  .dark .bg-slate-800 h2 {
+    margin-top: 0;
   }
 
-  ul {
-    width: 92%;
+  /* Add subtle animation to skill tags */
+  .bg-sky-100,
+  .dark .bg-sky-900 {
+    transition: all 0.2s ease;
   }
 
-  ul li {
-    margin-left: 10px;
-    list-style: disc;
+  .bg-sky-100:hover,
+  .dark .bg-sky-900:hover {
+    transform: translateY(-2px);
   }
 
-  ul li a {
-    color: $font-color;
-  }
-
+  /* Enhance visual hierarchy */
   h2 {
-    padding-bottom: 5px;
-    width: 90%;
+    position: relative;
+    margin-top: 0.5rem;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background-color: #0369a1; /* sky-700 */
+      border-radius: 3px;
+    }
   }
 
-  h3 {
-    border-top: 1px dashed $gray;
-    margin-bottom: -5px;
-    padding-bottom: 5px;
-    padding-top: 20px;
-    font-size: 1.2em;
+  .dark h2::after {
+    background-color: #38bdf8; /* sky-400 */
   }
 
-  h2 + h3 {
-    border-top: none;
-    padding-top: 5px;
+  /* Enhance job experience sections */
+  .border-l-4 {
+    transition: transform 0.2s ease-in-out;
   }
 
-  h4 {
-    font-size: 1em;
-    color: $gray;
+  .border-l-4:hover {
+    transform: translateX(2px);
+  }
+
+  /* Improve links */
+  a {
+    transition: all 0.15s ease;
+    position: relative;
+  }
+
+  a:hover::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: currentColor;
+    opacity: 0.6;
   }
 }

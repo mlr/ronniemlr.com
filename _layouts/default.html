@@ -1,6 +1,6 @@
 {% include header.html %}
-  <div id="content" class="page {{ page.name | split: '.' | first }}">
-    <article class="mx-auto px-8 pb-8 prose prose-slate prose-md md:prose-lg">
+  <div id="content" class="page {{ page.name | split: '.' | first }} dark:bg-slate-900">
+    <article class="mx-auto px-8 pb-8 prose prose-slate dark:prose-invert prose-md md:prose-lg">
       {{ content }}
     </article>
   </div>

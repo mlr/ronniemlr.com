@@ -1,9 +1,9 @@
 {% for post in site.posts %}
-<div class="mb-3">
-  <span class="blog-post-title">
-    <a href="{{ post.url }}">{{ post.title }}</a>
+<div class="mb-5 flex flex-col sm:flex-row justify-between border-b pb-3 border-slate-200 dark:border-slate-700">
+  <span class="blog-post-title font-medium">
+    <a href="{{ post.url }}" class="text-sky-700 dark:text-sky-400 hover:text-sky-900 dark:hover:text-sky-300 no-underline hover:underline">{{ post.title }}</a>
   </span>
-  <div class="blog-post-date">
+  <div class="blog-post-date text-slate-500 dark:text-slate-400 text-sm mt-1 sm:mt-0">
     {{ post.date | date: "%Y-%m-%d" }}
   </div>
 </div>
