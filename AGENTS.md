@@ -1,4 +1,3 @@
-# RonnieMLR.com - Project Information for LLMs
 
 ## Project Overview
 This is a personal website/blog for Ronnie Miller, a software developer. The site contains blog posts (called "Field Notes"), project information, a resume, and details about consulting services.
@@ -23,17 +22,24 @@ This is a personal website/blog for Ronnie Miller, a software developer. The sit
   - `consulting_cta.html`: Consulting services section
   - `blog_post_links.html`: List of blog posts
 - `_sass/`: SASS stylesheets
+  - `_resume.scss`: Custom styling for the resume page with print optimizations
+  - `_syntax.scss`: Code highlighting styles
+  - `_blog.scss`: Blog-specific styles
+  - `_font.scss`: Font declarations and typography
 - `_posts/`: Blog post content in Markdown
 - `css/`: Main CSS files and fonts
+  - `screen.scss`: Main stylesheet that imports other SCSS files
 - `images/`: Site images and logos
+- `resume.md`: Resume page with TailwindCSS and custom styling
 
 ## Key Design Elements
 - **Color scheme**: Primary colors include sky blue, slate gray, and stone colors
 - **Typography**: Blinker font family for headings (with fallbacks)
-- **Components**: 
+- **Components**:
   - Hero sections with decorative "wave" caps (`top-cap`, `bottom-cap`)
   - Card-based layout for services
   - Custom text highlighting (`.mark` class)
+  - Left-bordered sections for resume entries
 
 ## Content Management
 - Blog posts are written in Markdown with YAML front matter
@@ -51,3 +57,7 @@ This is a personal website/blog for Ronnie Miller, a software developer. The sit
 4. The site uses Jekyll's Liquid templating language for dynamic content
 5. Be mindful of responsive design patterns already established
 6. When making changes, ensure styling is consistent across all viewport sizes
+7. CSS file imports: Remember to check if your SCSS files are properly imported in `screen.scss`
+8. The resume page (`resume.md`) combines TailwindCSS with custom SCSS for styling
+9. When working with SCSS ensure variable definitions are included at the top of files
+10. Print styles are defined for the resume page to ensure proper printing
