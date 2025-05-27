@@ -1,5 +1,6 @@
 ---
 title: Configure Bugsnag to sync with Trello
+tags: Bugsnag-Trello runbook
 ---
 
 I'm embarrassed how long it takes me to figure out how to do this again after it's been several months or potentially years since needing to do it.

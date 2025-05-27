@@ -1,3 +1,8 @@
+---
+title: Rails Static Assets on ECS
+tags: Rails AWS ECS_Fargate Docker
+---
+
 ## Resources
 
 * [https://stackoverflow.com/questions/36354423/what-is-the-best-way-to-pass-aws-credentials-to-a-docker-container](https://stackoverflow.com/questions/36354423/what-is-the-best-way-to-pass-aws-credentials-to-a-docker-container)

@@ -1,5 +1,6 @@
 ---
 title: Transitioning to a Notebook-style format
+tags: note_taking LLM
 ---
 
 With the rise of large language models (LLMs), it has become easier to create content with minimal effort, and there is really no excuse to neglect a blog. I have been guilty of this and hence want to explore a transition to a more Notebook-style format for my personal blog (the one you are reading right now).

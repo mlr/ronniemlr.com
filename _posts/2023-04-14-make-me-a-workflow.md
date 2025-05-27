@@ -1,3 +1,8 @@
+---
+title: Make Me a Workflow
+tags: github_actions CI/CD ruby automation
+---
+
 ````text
 You're a professional ruby engineer and CI/CD dev ops engineer.
 Create a Github actions file that will run `bundle exec rake deploy`.

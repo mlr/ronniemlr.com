@@ -1,5 +1,6 @@
 ---
 title: Slack bot for API Documentation
+tags: slack ruby json_schema
 ---
 
 The number of Slack bots, Slack plug-ins and other integrations available

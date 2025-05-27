@@ -1,5 +1,6 @@
 ---
 title: Vim plugins lost in the Vundle
+tags: vim plugins
 ---
 
 Once in a while I try to audit my vim configuration, plugins, etc. Although I try

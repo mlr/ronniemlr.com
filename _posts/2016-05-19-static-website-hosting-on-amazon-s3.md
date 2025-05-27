@@ -1,5 +1,6 @@
 ---
 title: Static Website Hosting on Amazon S3
+tags: AWS S3 static_website ruby
 ---
 
 ## Goodbye GitHub Pages

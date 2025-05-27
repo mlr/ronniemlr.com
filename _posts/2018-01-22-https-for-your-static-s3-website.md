@@ -1,5 +1,6 @@
 ---
-title: HTTPS For Your Static S3 Website
+title: HTTPS for your Static S3 Website
+tags: AWS S3 static_website SSL
 ---
 
 ## Why HTTPS?

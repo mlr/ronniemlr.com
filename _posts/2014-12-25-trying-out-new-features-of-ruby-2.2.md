@@ -1,5 +1,6 @@
 ---
 title: Trying out new features of Ruby 2.2
+tags: ruby enumerable
 ---
 
 The Ruby core team shipped an awesome new version &ndash;
@@ -76,4 +77,3 @@ Let me know what you like about this release. Go forth and be productive!
 * Enumerable#slice_when &ndash;
   [documentation](http://ruby-doc.org/core-2.2.0/Enumerable.html#method-i-slice_when),
   [discussion](https://bugs.ruby-lang.org/issues/9826)
-
