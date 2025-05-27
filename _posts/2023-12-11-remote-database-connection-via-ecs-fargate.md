@@ -2,7 +2,7 @@
 title: Remote Database Connection via ECS Fargate
 description: Learn how to set up IAM permissions and use ecsta for port forwarding to connect to a remote database via ECS for backup or local development.
 keywords: IAM Permissions, ECS, ecsta, Port Forwarding, Remote Database, Backup, Local Development
-tags: AWS, ECS Fargate, SSM
+tags: AWS ECS_Fargate SSM
 image: /images/banner/remote-database-connection-via-ecs-fargate.png
 image_insert_order: 2 # number of paragraphs after which the image will be inserted
 ---

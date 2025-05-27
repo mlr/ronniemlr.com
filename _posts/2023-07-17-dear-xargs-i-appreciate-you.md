@@ -1,6 +1,6 @@
 ---
 title: Dear xargs, I appreciate you
-tags: xargs, jq, command line
+tags: xargs jq command_line
 description: >
     xargs & jq: A Dev Fan's Delight - Celebrating the Power of the Perfect Pair
     In this email, we pay tribute to xargs and its remarkable ability to handle

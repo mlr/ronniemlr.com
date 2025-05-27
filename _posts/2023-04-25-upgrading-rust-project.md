@@ -3,7 +3,7 @@ title: Upgrading a Rust Project
 description: Upgrading a Rust project from 1.46 to 1.65 to support Apple Silicon. A step-by-step look at updating dependencies like Rusoto and Tokio, solving common build errors, and finishing with a successful build.
 subtitle: Stepping through minor upgrade issues
 keywords: rust, cargo
-tags: rust, cargo
+tags: rust cargo
 image: /images/banner/upgrading-a-rust-project.png
 image_insert_order: 2 # number of paragraphs after which the image will be inserted
 ---

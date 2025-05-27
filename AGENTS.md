@@ -61,3 +61,44 @@ This is a personal website/blog for Ronnie Miller, a software developer. The sit
 8. The resume page (`resume.md`) combines TailwindCSS with custom SCSS for styling
 9. When working with SCSS ensure variable definitions are included at the top of files
 10. Print styles are defined for the resume page to ensure proper printing
+
+## Resume Page Implementation Details
+1. **Structure**: The resume page (`resume.md`) uses a combination of:
+   - TailwindCSS for layout, spacing, colors, and responsive design
+   - Custom SCSS in `_resume.scss` for advanced styling and print optimization
+   - Direct HTML markup in markdown file instead of traditional markdown syntax
+
+2. **Design Patterns**:
+   - Left-bordered sections with consistent padding for job entries
+   - Company name and dates on same line with bullet separator
+   - Card-based layout for summary and skills sections
+   - Subtle hover interactions (section hover moves slightly, skills tags lift)
+   - Fixed color scheme using sky-blue, slate grays, and white/dark backgrounds
+
+3. **Responsive Design**:
+   - Mobile-first approach with stacked elements on small screens
+   - Uses `md:` breakpoints for desktop layouts
+   - Single column on mobile, two column layout for skills on larger screens
+
+4. **Print Optimization**:
+   - Special media query in `_resume.scss` for print formatting
+   - Adjusts font sizes, removes backgrounds, and controls page breaks
+   - Reduces border thickness for cleaner printed appearance
+
+5. **Key Components**:
+   - Header with name and contact links
+   - Summary section with highlighted background
+   - Work experience entries with consistent structure
+   - Education section matching job entry styling
+   - Skills section with tag-style indicators
+
+6. **CSS Integration**:
+   - Custom resume styles in `_resume.scss` need to be imported in `screen.scss`
+   - SCSS variables defined at top of file (`$font-color`, `$gray`)
+   - Some complex SCSS features may need to be simplified for compatibility
+
+7. **Maintenance Tips**:
+   - Keep consistent spacing (padding/margins) between sections
+   - Maintain consistent typography sizes across sections
+   - Preserve left-border styling of job entries for visual consistency
+   - Test both light and dark modes when making changes

@@ -1,5 +1,5 @@
 // Theme Switcher for RonnieMLR.com
-// Handles 3-way toggle between system, dark and light modes
+// Handles cycling between system, dark and light modes with a single button
 
 // Theme values
 const THEMES = {
@@ -7,6 +7,9 @@ const THEMES = {
   DARK: 'dark',
   LIGHT: 'light'
 };
+
+// Theme cycling order
+const THEME_CYCLE = [THEMES.SYSTEM, THEMES.DARK, THEMES.LIGHT];
 
 // Make initializeTheme available globally
 window.initializeTheme = initializeTheme;
@@ -57,28 +60,37 @@ function applyTheme(theme) {
 }
 
 // Update the UI to show which theme is active
-function updateActiveButtonState(themeValue) {
-  const buttons = {
-    system: document.getElementById('theme-toggle-system'),
-    dark: document.getElementById('theme-toggle-dark'),
-    light: document.getElementById('theme-toggle-light')
+function updateActiveIconState(themeValue) {
+  const themeIcons = {
+    system: document.querySelector('.theme-toggle-btn .theme-icon.system'),
+    dark: document.querySelector('.theme-toggle-btn .theme-icon.dark'),
+    light: document.querySelector('.theme-toggle-btn .theme-icon.light')
   };
 
-  // First remove active class from all buttons
-  Object.values(buttons).forEach(button => {
-    if (button) button.classList.remove('active');
+  // Add a subtle animation class to the button
+  const cycleButton = document.getElementById('theme-toggle-cycle');
+  if (cycleButton) {
+    cycleButton.classList.add('theme-changed');
+    setTimeout(() => {
+      cycleButton.classList.remove('theme-changed');
+    }, 300);
+  }
+
+  // First remove active class from all icons
+  Object.values(themeIcons).forEach(icon => {
+    if (icon) icon.classList.remove('active');
   });
   
-  // Then add it to the correct button
+  // Then add it to the correct icon
   if (themeValue === THEMES.DARK || themeValue === THEMES.LIGHT) {
-    if (buttons[themeValue]) {
-      buttons[themeValue].classList.add('active');
-      logger(`Set ${themeValue} button as active`);
+    if (themeIcons[themeValue]) {
+      themeIcons[themeValue].classList.add('active');
+      logger(`Set ${themeValue} icon as active`);
     }
   } else {
-    if (buttons.system) {
-      buttons.system.classList.add('active');
-      logger('Set system button as active');
+    if (themeIcons.system) {
+      themeIcons.system.classList.add('active');
+      logger('Set system icon as active');
     }
   }
   
@@ -93,11 +105,25 @@ function updateActiveButtonState(themeValue) {
   }
 }
 
-// Handle a user selecting a theme
-function handleThemeSelection(theme) {
-  logger(`User selected: ${theme}`);
+// Get the next theme in the cycle
+function getNextTheme(currentTheme) {
+  const currentIndex = THEME_CYCLE.indexOf(currentTheme);
+  const nextIndex = (currentIndex + 1) % THEME_CYCLE.length;
+  return THEME_CYCLE[nextIndex];
+}
+
+// Handle theme cycling
+function handleThemeCycle() {
+  const currentTheme = getStoredThemePreference() || THEMES.SYSTEM;
+  const nextTheme = getNextTheme(currentTheme);
   
-  if (theme === THEMES.SYSTEM) {
+  // Add a subtle animation to the button
+  const cycleButton = document.getElementById('theme-toggle-cycle');
+  if (cycleButton) cycleButton.classList.add('cycling');
+  
+  logger(`Cycling theme from ${currentTheme} to ${nextTheme}`);
+  
+  if (nextTheme === THEMES.SYSTEM) {
     // Clear the stored preference to revert to system
     localStorage.removeItem('theme');
     logger('Removed theme from localStorage (using system)');
@@ -106,34 +132,33 @@ function handleThemeSelection(theme) {
     applyTheme(getSystemPreference());
   } else {
     // Store user's explicit preference
-    localStorage.setItem('theme', theme);
-    logger(`Saved ${theme} to localStorage`);
+    localStorage.setItem('theme', nextTheme);
+    logger(`Saved ${nextTheme} to localStorage`);
     
     // Apply the selected theme
-    applyTheme(theme);
+    applyTheme(nextTheme);
   }
   
   // Update the UI
-  updateActiveButtonState(theme);
+  updateActiveIconState(nextTheme);
+  
+  // Remove animation class after transition
+  setTimeout(() => {
+    const cycleButton = document.getElementById('theme-toggle-cycle');
+    if (cycleButton) cycleButton.classList.remove('cycling');
+  }, 300);
 }
 
-// Set up event handlers for theme buttons
-function setupThemeToggleHandlers() {
-  const buttons = {
-    system: document.getElementById('theme-toggle-system'),
-    dark: document.getElementById('theme-toggle-dark'),
-    light: document.getElementById('theme-toggle-light')
-  };
-
-  logger(`Buttons found: system=${!!buttons.system}, dark=${!!buttons.dark}, light=${!!buttons.light}`);
+// Set up event handler for the theme toggle button
+function setupThemeCycleHandler() {
+  const cycleButton = document.getElementById('theme-toggle-cycle');
   
-  // Add click listeners
-  Object.entries(buttons).forEach(([theme, button]) => {
-    if (button) {
-      button.addEventListener('click', () => handleThemeSelection(theme));
-      logger(`Added click handler to ${theme} button`);
-    }
-  });
+  if (cycleButton) {
+    cycleButton.addEventListener('click', handleThemeCycle);
+    logger('Added click handler to theme cycle button');
+  } else {
+    logger('ERROR: Theme cycle button not found in DOM');
+  }
   
   // Listen for system preference changes
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', ({ matches }) => {
@@ -162,10 +187,10 @@ function initializeTheme() {
   applyTheme(effectiveTheme);
   
   // Update UI
-  updateActiveButtonState(storedTheme || THEMES.SYSTEM);
+  updateActiveIconState(storedTheme || THEMES.SYSTEM);
   
-  // Set up event handlers
-  setupThemeToggleHandlers();
+  // Set up event handler
+  setupThemeCycleHandler();
   
   // Log final state
   logger(`Initialization complete. Dark mode is ${document.documentElement.classList.contains('dark') ? 'ON' : 'OFF'}`);

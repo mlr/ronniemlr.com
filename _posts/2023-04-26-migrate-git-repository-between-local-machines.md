@@ -1,6 +1,6 @@
 ---
 title: Migrate a Git Repository between Local Machines
-tags: git, migration
+tags: git migration
 ---
 
 Something you might encounter when migrating to a new machine:

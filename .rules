@@ -1,0 +1,100 @@
+# Ronniemlr.com Rules for LLMs
+
+## Project Orientation
+1. Start by reading `AGENTS.md` for project overview, structure and important implementation details.
+2. Check `TASKS.md` to understand current priorities and in-progress work.
+3. This is a personal website for Ronnie Miller, a software developer with focus on Ruby and JavaScript technologies.
+
+## Code Conventions
+1. Use a combination of Jekyll, TailwindCSS, and SCSS for styling:
+   - TailwindCSS for most modern components (utility-first approach)
+   - Custom SCSS in `_sass/` directory for complex components or print styles
+   - Ensure imports are set up properly in `screen.scss` for any new SCSS files
+
+2. Follow existing naming patterns:
+   - Kebab-case for file names (`my-component.html`)
+   - Snake_case for Jekyll variables
+   - Use meaningful, descriptive names that align with existing conventions
+
+3. Maintain HTML structure:
+   - Keep semantically meaningful tags
+   - Ensure proper heading hierarchy (h1, h2, h3)
+   - Maintain accessibility attributes where present
+
+## Content Guidelines
+1. Maintain professional, concise tone that matches existing content
+2. Blog posts ("Field Notes") use a conversational but technically informed voice
+3. Resume content should highlight professional achievements without embellishment
+4. Preserve existing content organization and hierarchy
+
+## Design System
+1. Colors follow a consistent palette:
+   - Primary: sky blues (sky-600, sky-700, sky-400 for dark mode)
+   - Background: white/slate-900 (light/dark mode)
+   - Text: slate-800/slate-300 (light/dark mode)
+   - Accents: slate-500/slate-600 for subtle elements
+
+2. Typography:
+   - 'Blinker' for headings
+   - System fonts for body text
+   - Maintain existing size hierarchy
+
+3. Components:
+   - Wave-styled section dividers ("caps") for visual interest
+   - Left-bordered sections in resume for job entries
+   - Card-based layouts for important information
+   - Consistent padding/margins between sections
+
+## Dark Mode
+1. All new components must support dark mode
+2. Use Tailwind dark: prefix for dark mode styles
+3. Test all changes in both light and dark modes
+4. Ensure sufficient contrast in both modes
+
+## Technical Requirements
+1. Ensure all SCSS files are properly imported in screen.scss
+2. Test with Jekyll 3.7.2 (current version)
+3. Maintain print styles where applicable, especially in resume
+4. Keep responsive design in mind - site should work on mobile
+5. Avoid adding unnecessary JavaScript unless absolutely required
+6. When fixing or editing SCSS files, check for nesting and variable usage compatibility
+7. Consider Jekyll's SCSS processing limitations when using advanced SCSS features
+
+## Process for Changes
+1. Check `TASKS.md` before making changes
+2. Update `TASKS.md` when completing items
+3. Document complex implementations in `AGENTS.md` for future reference
+4. Test changes in both light and dark mode
+5. Test responsive behavior at multiple breakpoints
+6. Ensure print styles remain functional where applicable
+7. After updating any SCSS file, verify it's imported correctly in screen.scss
+8. When changing the resume page, ensure it looks correct for both screen and print
+
+## Structure Preservation
+1. Maintain existing directory structure
+2. Keep Jekyll front matter in markdown files
+3. Preserve permalink structure
+4. Maintain existing includes and layout references
+
+## When in Doubt
+1. Follow existing patterns in the codebase
+2. Prioritize simplicity over complexity
+3. Document your decisions in code comments or in AGENTS.md
+4. Consider both technical and aesthetic consistency
+5. Use utility classes from Tailwind before writing custom CSS
+6. Check responsive behavior at different breakpoints (mobile, tablet, desktop)
+
+## Resume Page Specific
+1. Keep the left-bordered section styling for job entries
+2. Maintain consistent spacing between job sections
+3. Ensure dates and company names follow the established format
+4. Keep the skills section tag-style format
+5. Ensure print styles remain intact for resume printing
+6. Test both light and dark mode after any changes
+
+## CSS Architecture
+1. New components should primarily use TailwindCSS utility classes
+2. Complex or reusable components may warrant custom SCSS in _sass directory
+3. Always check if custom SCSS files are imported in screen.scss
+4. Avoid modifying core site elements in header.html and footer.html directly
+5. Prefer CSS Grid or Flexbox over absolute positioning

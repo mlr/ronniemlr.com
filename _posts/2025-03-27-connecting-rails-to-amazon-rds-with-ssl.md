@@ -2,7 +2,7 @@
 title: Connecting Rails to Amazon RDS with SSL
 description: A guide to setting up secure SSL connections between Rails applications and Amazon RDS databases, including troubleshooting self-signed certificate issues in Docker environments.
 keywords: Rails, Amazon RDS, SSL, database, OpenSSL, Docker
-tags: Rails, AWS, RDS, SSL, Database, Configuration
+tags: Rails AWS RDS SSL
 image: /images/banner/connecting-rails-to-amazon-rds-with-ssl.png
 image_insert_order: 2 # number of paragraphs after which the image will be inserted
 ---
