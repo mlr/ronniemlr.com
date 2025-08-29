@@ -19,7 +19,7 @@ layout: home
       </div>
     </div>
 
-    <div class="field-notes-container">
+    <div class="field-notes-container w-full">
       {% include blog_post_links.html %}
     </div>
   </div>

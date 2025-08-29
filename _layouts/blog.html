@@ -8,19 +8,19 @@
       {% endif %}
 
       <div class="post-meta">
-        <div class="post-tags">
-          <span>
-            {% for tag in page.tags %}
-              <a href="/tags/#{{ tag | slugify }}" class="hover:text-sky-100 hover:underline">{{ tag | replace: '_', ' ' }}</a>{% unless forloop.last %}, {% endunless %}
-            {% endfor %}
-          </span>
-        </div>
-
-        <div class="post-date">
+        <div class="post-date m-5">
           {{ page.date | date: "%B" }}
           {% assign d = page.date | date: "%-d" %}
           {% case d %}{% when "1" or "21" or "31" %}{{ d }}st{% when "2" or "22" %}{{ d }}nd{% when "3" or "23" %}{{ d }}rd{% else %}{{ d }}th{% endcase %},
           {{ page.date | date: "%Y" }}
+        </div>
+
+        <div class="post-tags">
+          <div class="flex flex-wrap gap-1 justify-center m-2">
+            {% for tag in page.tags %}
+              <a href="/tags/#{{ tag | slugify }}" class="py-0.5 px-2 bg-sky-600 hover:bg-sky-700 dark:bg-sky-700 dark:hover:bg-sky-800 rounded-full text-white dark:text-white transition-colors text-xs">{{ tag | replace: '_', ' ' }}</a>
+            {% endfor %}
+          </div>
         </div>
       </div>
   </section>
