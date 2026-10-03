@@ -6,13 +6,10 @@ summary: >-
   operations to usage-based billing platforms.
 
 contact:
-  - label: Crescent City, CA
   - label: github.com/mlr
     url: https://github.com/mlr
   - label: linkedin.com/in/ronniemlr
     url: https://linkedin.com/in/ronniemlr
-  - label: buildtest.run
-    url: https://buildtest.run
 
 jobs:
   - company: KABI Automotive
