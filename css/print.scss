@@ -63,6 +63,21 @@ html {
   font-size: 22pt;
 }
 
+// Print the name instead of the logo.
+.site-logo {
+  display: none;
+}
+
+.site-name-text {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
 a {
   text-decoration: none;
 }
