@@ -1,5 +1,7 @@
 ---
 title: HTTPS For Your Static S3 Website
+summary: 'Adding HTTPS to a static S3 site with AWS Certificate Manager and CloudFront.'
+topics: [AWS, This site]
 ---
 
 ## Why HTTPS?

@@ -1,6 +1,24 @@
-{% include header.html %}
-    <div id="content" class="page {{ page.name | split: '.' | first }}">
-      {{ content }}
-    </div>
-    {% include about.html %}
-{% include footer.html %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% include head.html %}
+</head>
+
+<body>
+{% assign is_home = false %}{% if page.url == "/" or page.url == "/index.html" %}{% assign is_home = true %}{% endif %}
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="wrapper">
+  {% include header.html %}
+
+  <main id="main" class="{% if page.title %}page-{{ page.title | slugify }}{% else %}page-home{% endif %}">
+    {% if page.title and page.layout != "blog" %}
+      <h1 class="page-title">{{ page.title }}</h1>
+    {% endif %}
+    {{ content }}
+  </main>
+
+  {% include footer.html %}
+</div>
+{% include google_ga.html %}
+</body>
+</html>

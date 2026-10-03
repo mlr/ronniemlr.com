@@ -1,0 +1,22 @@
+{% comment %}The six entries after the newest one, in two columns.{% endcomment %}
+<section class="recent" aria-labelledby="recent-label">
+  <h2 class="section-label" id="recent-label">Recent</h2>
+  <div class="recent-grid">
+    {% for post in site.posts offset:1 limit:6 %}
+      {% include entry-vars.html post=post %}
+      <article class="recent-item">
+        <p class="entry-meta">
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+          <span>{% if kind == "write-up" %}{{ minutes }} min{% else %}{{ kind }}{% endif %}</span>
+        </p>
+        <h3 class="recent-title"><a href="{{ post.url }}">{{ post.title }}</a></h3>
+        {% if kind == "write-up" %}
+          <p class="recent-summary">{% if post.summary and post.summary != "" %}{{ post.summary | markdownify | remove: "<p>" | remove: "</p>" | strip }}{% else %}{{ post.content | split: "<p>" | slice: 1 | first | split: "</p>" | first }}{% endif %}</p>
+        {% else %}
+          {% assign first_paragraph = post.content | split: "<p>" | slice: 1 | first | split: "</p>" | first %}
+          <p class="recent-summary">{{ first_paragraph }}</p>
+        {% endif %}
+      </article>
+    {% endfor %}
+  </div>
+</section>

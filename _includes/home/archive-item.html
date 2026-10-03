@@ -1,0 +1,7 @@
+{% comment %}One archive row. Pass post= and date_format=.{% endcomment %}
+{% include entry-vars.html post=include.post %}
+<li>
+  <a href="{{ include.post.url }}">{{ include.post.title }}</a>
+  {% unless kind == "write-up" %}<span class="archive-kind">{{ kind }}</span>{% endunless %}
+  <time datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date: include.date_format }}</time>
+</li>

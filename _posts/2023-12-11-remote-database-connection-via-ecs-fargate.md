@@ -5,6 +5,8 @@ keywords: IAM Permissions, ECS, ecsta, Port Forwarding, Remote Database, Backup,
 tags: AWS, ECS Fargate, SSM
 image: /images/banner/remote-database-connection-via-ecs-fargate.png
 image_insert_order: 2 # number of paragraphs after which the image will be inserted
+summary: 'Reach a private RDS database through ECS Fargate with ecsta and SSM port forwarding, no bastion host needed.'
+topics: [AWS, Databases]
 ---
 
 In [a previous

@@ -1,0 +1,111 @@
+{% comment %}
+  Every entry, grouped by topic or by date. Topics come from each post's `topics:`
+  front matter and are listed largest first; _data/topics.yml breaks ties. Entries
+  with no topic go under "Other". Without JavaScript both views show; with it, a switch shows one
+  and remembers the reader's choice.
+{% endcomment %}
+<section class="archive" aria-labelledby="archive-label">
+  <div class="archive-head">
+    <h2 class="section-label" id="archive-label">Archive</h2>
+    <div class="archive-switch" role="group" aria-label="Group the archive" data-active="topic" hidden>
+      <span class="archive-switch-thumb" aria-hidden="true"></span>
+      <button type="button" data-archive-view="topic" aria-pressed="true">By topic</button>
+      <button type="button" data-archive-view="date" aria-pressed="false">By date</button>
+    </div>
+  </div>
+
+  <div class="archive-view" data-view="topic">
+    <div class="topics">
+      {% comment %}
+        Largest topic first. Each key is "inverted count|position in topics.yml|name",
+        so a plain string sort gives the most entries first, and ties keep the file's order.
+      {% endcomment %}
+      {% assign topic_keys = "" | split: "" %}
+      {% for topic in site.data.topics %}
+        {% assign topic_posts = site.posts | where_exp: "p", "p.topics contains topic" %}
+        {% assign inverted = 999 | minus: topic_posts.size | prepend: "000" | slice: -3, 3 %}
+        {% assign position = forloop.index | prepend: "00" | slice: -2, 2 %}
+        {% assign key = inverted | append: "|" | append: position | append: "|" | append: topic %}
+        {% assign topic_keys = topic_keys | push: key %}
+      {% endfor %}
+      {% assign topic_keys = topic_keys | sort %}
+
+      {% for key in topic_keys %}
+        {% assign topic = key | split: "|" | last %}
+        {% assign topic_posts = site.posts | where_exp: "p", "p.topics contains topic" %}
+        {% if topic_posts.size > 0 %}
+          <section class="topic">
+            <h3 class="topic-name">{{ topic }} <span class="topic-count">{{ topic_posts.size }}</span></h3>
+            <ol class="archive-list">
+              {% for post in topic_posts %}{% include home/archive-item.html post=post date_format="%Y" %}{% endfor %}
+            </ol>
+          </section>
+        {% endif %}
+      {% endfor %}
+
+      {% assign untopical = "" | split: "" %}
+      {% for post in site.posts %}
+        {% if post.topics == nil or post.topics.size == 0 %}{% assign untopical = untopical | push: post %}{% endif %}
+      {% endfor %}
+      {% if untopical.size > 0 %}
+        <section class="topic">
+          <h3 class="topic-name">Other <span class="topic-count">{{ untopical.size }}</span></h3>
+          <ol class="archive-list">
+            {% for post in untopical %}{% include home/archive-item.html post=post date_format="%Y" %}{% endfor %}
+          </ol>
+        </section>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="archive-view" data-view="date">
+    {% assign current_year = "" %}
+    {% for post in site.posts %}
+      {% assign year = post.date | date: "%Y" %}
+      {% if year != current_year %}
+        {% unless current_year == "" %}</ol></div>{% endunless %}
+        <div class="archive-year">
+          <h3 class="archive-year-label">{{ year }}</h3>
+          <ol class="archive-list">
+        {% assign current_year = year %}
+      {% endif %}
+      {% include home/archive-item.html post=post date_format="%b %-d" %}
+      {% if forloop.last %}</ol></div>{% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+<script>
+  // Archive switch: show one view and remember the reader's choice.
+  (function () {
+    var group = document.querySelector(".archive-switch");
+    if (!group) return;
+    var buttons = group.querySelectorAll("[data-archive-view]");
+    var views = document.querySelectorAll(".archive-view");
+
+    function show(view) {
+      // The thumb slides by CSS from this attribute.
+      group.setAttribute("data-active", view);
+      for (var i = 0; i < views.length; i++) {
+        views[i].hidden = views[i].getAttribute("data-view") !== view;
+      }
+      for (var j = 0; j < buttons.length; j++) {
+        buttons[j].setAttribute("aria-pressed", buttons[j].getAttribute("data-archive-view") === view ? "true" : "false");
+      }
+    }
+
+    for (var k = 0; k < buttons.length; k++) {
+      buttons[k].addEventListener("click", function () {
+        var view = this.getAttribute("data-archive-view");
+        show(view);
+        try { localStorage.setItem("archive-view", view); } catch (e) {}
+      });
+    }
+
+    var saved = null;
+    try { saved = localStorage.getItem("archive-view"); } catch (e) {}
+    // Set the start position while the switch is still hidden, so it does not slide on load.
+    show(saved === "date" ? "date" : "topic");
+    group.hidden = false;
+  })();
+</script>

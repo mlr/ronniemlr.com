@@ -1,0 +1,135 @@
+// The same header on every page: name at the left, menu at the right.
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem 2rem;
+  padding: 2rem 0;
+  margin-bottom: 2rem;
+}
+
+.site-name {
+  color: var(--text);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+    color: var(--link);
+  }
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+
+  ul {
+    display: flex;
+    gap: 1.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
+    color: var(--text);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      text-decoration-color: var(--line);
+    }
+
+    &[aria-current="page"],
+    &.is-active {
+      color: var(--link);
+    }
+  }
+
+  .site-hire {
+    padding: 0.3rem 0.75rem;
+    border-radius: 4px;
+    background: var(--button-bg);
+    color: var(--button-text);
+    line-height: 1.4;
+
+    &:hover {
+      text-decoration: none;
+      opacity: 0.88;
+    }
+  }
+}
+
+// Home page introduction, below the shared header.
+
+.intro {
+  margin: 1.5rem 0 4rem;
+}
+
+.intro-statement {
+  margin: 0;
+  font-size: 2.125rem;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+
+  // A quiet link at this size: text color, thin cyan underline, teal on hover.
+  a {
+    color: inherit;
+    text-decoration-color: var(--line);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.12em;
+
+    &:hover {
+      color: var(--link);
+    }
+  }
+}
+
+// About paragraphs under the statement: who I am, then "Currently, you can find me...".
+.intro-bio {
+  max-width: $measure;
+  margin-top: 1.25rem;
+  color: var(--text-2);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+
+  p {
+    margin: 0 0 0.875rem;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: $narrow) {
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5rem 0;
+    margin-bottom: 1.25rem;
+  }
+
+  .site-nav {
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
+  }
+
+  .intro {
+    margin: 0.75rem 0 3rem;
+  }
+
+  .intro-statement {
+    font-size: 1.75rem;
+  }
+}

@@ -1,0 +1,23 @@
+{% comment %}
+  The newest entry, shown in full. Set `kind` in a post's front matter:
+    kind: note   - the text in large type
+    (none)       - a write-up: title and `summary:`
+{% endcomment %}
+{% assign newest = site.posts | first %}
+{% include entry-vars.html post=newest %}
+<section class="latest" aria-labelledby="latest-label">
+  <h2 class="section-label" id="latest-label">Latest</h2>
+  <article class="latest-entry latest-entry--{{ kind }}">
+    <p class="entry-meta">
+      <a href="{{ newest.url }}"><time datetime="{{ newest.date | date_to_xmlschema }}">{{ newest.date | date: "%B %-d, %Y" }}</time></a>
+      <span>{% if kind == "write-up" %}{{ minutes }} min read{% else %}{{ kind }}{% endif %}</span>
+    </p>
+    {% case kind %}
+    {% when "note" %}
+      <div class="latest-body">{{ newest.content }}</div>
+    {% else %}
+      <h3 class="latest-title"><a href="{{ newest.url }}">{{ newest.title }}</a></h3>
+      <p class="latest-body">{% if newest.summary and newest.summary != "" %}{{ newest.summary | markdownify | remove: "<p>" | remove: "</p>" | strip }}{% else %}{{ newest.content | split: "<p>" | slice: 1 | first | split: "</p>" | first }}{% endif %}</p>
+    {% endcase %}
+  </article>
+</section>

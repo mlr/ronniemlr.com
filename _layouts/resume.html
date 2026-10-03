@@ -1,0 +1,55 @@
+---
+layout: default
+---
+{% assign resume = site.data.resume %}
+<div class="resume">
+  <p class="resume-summary">{{ resume.summary }}</p>
+
+  <ul class="resume-contact">
+    {% for item in resume.contact %}
+      <li>{% if item.url %}<a href="{{ item.url }}">{{ item.label }}</a>{% else %}{{ item.label }}{% endif %}</li>
+    {% endfor %}
+  </ul>
+
+  <section class="resume-section" aria-labelledby="resume-experience">
+    <h2 class="resume-heading" id="resume-experience">Experience</h2>
+
+    <ol class="timeline">
+      {% for job in resume.jobs %}
+        {% assign start_year = job.start | split: " " | last %}
+        {% if job.end == "Present" %}{% assign end_year = "now" %}{% else %}{% assign end_year = job.end | split: " " | last %}{% endif %}
+        <li class="timeline-item">
+          <p class="timeline-when" title="{{ job.start }} to {{ job.end }}">
+            {% if start_year == end_year %}{{ start_year }}{% else %}{{ start_year }}&ndash;{{ end_year }}{% endif %}
+          </p>
+          <h3 class="job-company">{% if job.url %}<a href="{{ job.url }}">{{ job.company }}</a>{% else %}{{ job.company }}{% endif %}</h3>
+          <p class="job-role">
+            {{ job.title }}{% if job.location %}<span class="job-location">, {{ job.location }}</span>{% endif %}
+          </p>
+          {% if job.highlights %}
+            <ul class="job-highlights">
+              {% for highlight in job.highlights %}
+                <li>{{ highlight }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ol>
+  </section>
+
+  <section class="resume-section" aria-labelledby="resume-more">
+    <h2 class="visually-hidden" id="resume-more">Education, skills, and certification</h2>
+    <dl class="resume-details">
+      {% for detail in resume.details %}
+        <div class="resume-detail">
+          <dt>{{ detail.label }}</dt>
+          <dd>
+            {{ detail.value }}
+            {% if detail.note %}<span class="resume-detail-note">{{ detail.note }}</span>{% endif %}
+          </dd>
+        </div>
+      {% endfor %}
+    </dl>
+  </section>
+</div>

@@ -1,0 +1,24 @@
+---
+layout: default
+---
+<p class="page-intro">
+  Products I have built. For what I'm exploring with AI now, see <a href="{{ site.consulting_url }}">BuildTestRun</a>.
+</p>
+
+<div class="projects">
+  {% for project in site.data.projects %}
+    <article class="project">
+      <h2 class="project-name">
+        {% if project.url %}
+          {% assign domain = project.url | split: "//" | last | split: "/" | first | remove_first: "www." %}
+          <a href="{{ project.url }}">{{ project.name }}</a>
+          <span class="project-domain">{{ domain }}</span>
+          {% if project.formerly %}<span class="project-formerly">formerly {{ project.formerly }}</span>{% endif %}
+        {% else %}
+          {{ project.name }}
+        {% endif %}
+      </h2>
+      <div class="project-description">{{ project.description | markdownify }}</div>
+    </article>
+  {% endfor %}
+</div>

@@ -1,5 +1,7 @@
 ---
 title: Configure Bugsnag to sync with Trello
+summary: 'The steps to connect Bugsnag to Trello with a Power-Up token, written down so I stop looking for them.'
+topics: [Integrations]
 ---
 
 I'm embarrassed how long it takes me to figure out how to do this again after it's been several months or potentially years since needing to do it.

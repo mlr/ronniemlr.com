@@ -1,0 +1,291 @@
+// Home page: latest entry, recent entries, and the archive (by topic or by date).
+
+.section-label {
+  margin: 0 0 1.25rem;
+  font-family: $font-mono;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--link);
+}
+
+%quiet-link {
+  color: var(--text);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--line);
+    text-decoration-thickness: 2px;
+  }
+}
+
+.recent,
+.archive {
+  padding-top: 2rem;
+  border-top: 1px solid var(--rule);
+}
+
+// Latest
+
+.latest {
+  margin-bottom: 3.5rem;
+
+  .entry-meta {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.latest-title {
+  margin: 0;
+  font-size: 2rem;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+
+  a {
+    @extend %quiet-link;
+  }
+}
+
+.latest-body {
+  max-width: $measure;
+  margin: 0.625rem 0 0;
+  font-size: 1.375rem;
+  line-height: 1.45;
+
+  > :first-child { margin-top: 0; }
+  > :last-child { margin-bottom: 0; }
+
+  p { margin: 0 0 0.75rem; }
+  pre { margin: 0.75rem 0; font-size: 0.875rem; }
+}
+
+.latest-entry--write-up .latest-body {
+  color: var(--text-2);
+  font-size: 1.1875rem;
+}
+
+// Recent
+
+.recent {
+  margin-bottom: 3.5rem;
+}
+
+.recent-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem 3.5rem;
+}
+
+.recent-item .entry-meta {
+  margin-bottom: 0.25rem;
+}
+
+// Line up each row: the date lines, titles, and summaries of the two entries in a
+// row share three grid rows, so a two-line title moves both summaries down together.
+@supports (grid-template-rows: subgrid) {
+  .recent-grid {
+    row-gap: 0;
+  }
+
+  .recent-item {
+    display: grid;
+    grid-row: span 3;
+    grid-template-rows: subgrid;
+    align-content: start;
+  }
+
+  // The space between rows of entries, now that the grid has no row gap.
+  .recent-summary {
+    padding-bottom: 2rem;
+  }
+
+  .recent-item:nth-last-child(-n + 2) .recent-summary {
+    padding-bottom: 0;
+  }
+
+  // One column: only the very last entry ends the grid.
+  @media (max-width: $narrow) {
+    .recent-item:nth-last-child(2) .recent-summary {
+      padding-bottom: 2rem;
+    }
+  }
+}
+
+.recent-title {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.3;
+
+  a {
+    @extend %quiet-link;
+  }
+}
+
+.recent-summary {
+  margin: 0.375rem 0 0;
+  color: var(--text-2);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+// Archive
+
+.archive-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+
+  .section-label {
+    margin: 0;
+  }
+}
+
+// Two equal buttons with one pill behind them that slides to the active one.
+.archive-switch {
+  position: relative;
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  padding: 2px;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+
+  &[hidden] {
+    display: none;
+  }
+
+  button {
+    position: relative;
+    z-index: 1;
+    padding: 0.25rem 0.875rem;
+    border: 0;
+    border-radius: 999px;
+    background: none;
+    color: var(--text-2);
+    font-family: $font-mono;
+    font-size: 0.8125rem;
+    line-height: 1.4;
+    cursor: pointer;
+    transition: color 180ms ease;
+
+    &:hover,
+    &[aria-pressed="true"] {
+      color: var(--text);
+    }
+  }
+}
+
+.archive-switch-thumb {
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  left: 2px;
+  // Half of the inner width, less half of the 2px gap.
+  width: calc(50% - 3px);
+  border-radius: 999px;
+  background: var(--rule);
+  transition: transform 240ms cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+.archive-switch[data-active="date"] .archive-switch-thumb {
+  transform: translateX(calc(100% + 2px));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .archive-switch-thumb,
+  .archive-switch button {
+    transition: none;
+  }
+}
+
+.archive-view[hidden] {
+  display: none;
+}
+
+// Without JavaScript both views show; keep them apart.
+.archive-view:not([hidden]) + .archive-view:not([hidden]) {
+  margin-top: 3rem;
+}
+
+.archive-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem 1rem;
+    padding: 0.2rem 0;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  a {
+    @extend %quiet-link;
+    flex: 1;
+  }
+
+  time {
+    @extend %meta;
+    white-space: nowrap;
+  }
+}
+
+.archive-kind {
+  @extend %meta;
+}
+
+// By topic: two columns of topic groups.
+.topics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.5rem 3.5rem;
+}
+
+.topic-name {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin: 0 0 0.625rem;
+  font-size: 1.125rem;
+}
+
+.topic-count {
+  @extend %meta;
+}
+
+.topic .archive-list li {
+  gap: 0.5rem;
+  padding: 0.3rem 0;
+  font-size: 0.9375rem;
+}
+
+// By date: the year at the left, the entries at the right.
+.archive-year {
+  display: grid;
+  grid-template-columns: 4rem minmax(0, 1fr);
+  gap: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+.archive-year-label {
+  @extend %meta;
+  margin: 0;
+  line-height: 1.6rem;
+}
+
+@media (max-width: $narrow) {
+  .recent-grid,
+  .topics {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .archive-year {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.25rem;
+  }
+}

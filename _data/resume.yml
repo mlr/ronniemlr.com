@@ -1,0 +1,112 @@
+# Source: LinkedIn profile export (October 2026). The resume page renders this file.
+
+summary: >-
+  Web and software developer with over 15 years of experience crafting online
+  experiences. I have worked in a broad range of problem domains, from automotive
+  operations to usage-based billing platforms.
+
+contact:
+  - label: Crescent City, CA
+  - label: github.com/mlr
+    url: https://github.com/mlr
+  - label: linkedin.com/in/ronniemlr
+    url: https://linkedin.com/in/ronniemlr
+  - label: buildtest.run
+    url: https://buildtest.run
+
+jobs:
+  - company: KABI Automotive
+    title: Partner & CTO
+    start: October 2015
+    end: Present
+    highlights:
+      - Own design and development of patented SaaS products used by auto dealerships nationwide
+      - Manage mission-critical cloud infrastructure and build tooling to maximize development velocity
+      - Championed security initiatives, leading the organization through SOC&nbsp;2 certification
+      - Contribute to the overall product direction, balancing customer feedback and business goals
+
+  - company: BuildTestRun
+    url: https://buildtest.run
+    title: Founder
+    start: March 2022
+    end: Present
+
+  - company: DataStax
+    title: Managing Software Engineer
+    start: November 2020
+    end: April 2022
+    location: Remote
+    highlights:
+      - Technical and career coach for multiple cross-disciplinary engineering teams
+      - Interpret company vision and product requirements into understandable, executable work
+      - Coordinate and unblock development across multiple different functional teams
+      - Work with team members to define and measure career development and growth goals
+      - Represent the team to stakeholders including executive leadership, product, design, and others
+
+  - company: New Relic, Inc.
+    title: Senior Software Engineer
+    start: February 2017
+    end: November 2020
+    location: Remote
+    highlights:
+      - Design and build systems for usage metering, cost estimation, and platform REST/GraphQL APIs
+      - Instrument and improve resiliency of Kafka producers and services distributing platform data
+      - Help form a strategically critical team and drive legacy billing extraction to a vendor platform
+      - Mentor and onboard engineers through pairing, technical workshops, and organizing game days
+      - Lead automation and access control improvements to reduce team toil and secure internal tools
+
+  - company: Cvent
+    title: Software Engineer
+    start: January 2015
+    end: February 2017
+    location: Portland, OR
+    highlights:
+      - Reduced costs by migrating third-party dependencies to AWS equivalents
+      - Built REST microservices for custom email templating and delivery
+      - Mentored several interns and on-boarded new developers
+      - Served as a Technical Lead of the backend platforms team
+
+  - company: Advanced Industrial Services
+    title: Software Engineer
+    start: August 2012
+    end: September 2014
+    location: Bakersfield, CA
+    highlights:
+      - Collaborated with stakeholders including President, CTO, Ops Managers, and Field Technicians
+      - Developed software to streamline billing management, project scheduling, and fleet tracking
+      - Leveraged Twilio to create unique telephone survey and employee trainings
+
+  - company: Freelance
+    title: Software Developer
+    start: May 2008
+    end: August 2012
+    location: Remote
+    highlights:
+      - Created responses to RFPs, statements of work, and proofs of concept to secure bids
+      - Built web and mobile software using primarily Ruby on Rails and React
+      - Helped migrate existing and legacy websites to new applications
+      - Deployed and managed infrastructure for clients and customers
+
+  - company: The Marcom Group
+    title: Web Developer
+    start: October 2007
+    end: May 2008
+    location: Bakersfield, CA
+    highlights:
+      - Converted designs to semantic HTML and CSS
+      - Met and worked with clients to produce project estimates and timelines
+      - Used PHP/MySQL to create highly customized web apps for a variety of industries
+      - Used frameworks like WordPress and CodeIgniter to speed up development
+      - Used jQuery to improve user experience and ease of use
+      - Handled minor Linux and Apache server maintenance
+      - Managed DNS setup and changes for new websites
+
+details:
+  - label: Education
+    value: California State University, Chico
+    note: B.S. in Computer Information Systems, Business Administration, 2008&ndash;2012
+  - label: Skills
+    value: Ruby, Ruby on Rails, Amazon Web Services (AWS)
+  - label: Certification
+    value: Private Pilot License (ASEL)
+    note: U.S. Federal Aviation Administration, 2017

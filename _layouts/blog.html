@@ -1,48 +1,59 @@
+---
+layout: default
+---
+{% assign kind = page.kind | default: "write-up" %}
 {% capture post_slug %}{{ page.url | remove_first:'/' | split:'/' | last }}{% endcapture %}
-{% include header.html %}
-    <div id="content" class="blog-post {{post_slug}}">
-      <h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
-      {% if page.subtitle %}
-        <h3>{{ page.subtitle }}</h3>
+<article class="post post--{{ kind }} {{ post_slug }}">
+  <header class="post-header">
+    <p class="entry-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+      {% if kind == "write-up" %}
+        {% assign minutes = content | strip_html | number_of_words | plus: 110 | divided_by: 220 %}{% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}
+        <span>{{ minutes }} min read</span>
+      {% else %}
+        <span>{{ kind }}</span>
       {% endif %}
+    </p>
+    <h1 class="post-title">{{ page.title }}</h1>
+    {% if page.subtitle %}
+      <p class="post-subtitle">{{ page.subtitle }}</p>
+    {% endif %}
+  </header>
 
-      <div class="post-meta">
-        <div class="post-tags">
-          <ul>
-            {% for tags in page.tags %}
-              <li>{{ tags }}</li>
-            {% endfor %}
-          </ul>
-        </div>
+  <div class="post-content">
+    {% if page.image %}
+      {% assign paragraphs = content | split: '</p>' %}
+      {% assign insert_after = page.image_insert_order | default: 1 %}
+      {% for paragraph in paragraphs limit:insert_after %}
+        {{ paragraph }}</p>
+      {% endfor %}
 
-        <div class="post-date">
-          {{ page.date | date: "%B" }}
-          {% assign d = page.date | date: "%-d" %}
-          {% case d %}{% when "1" or "21" or "31" %}{{ d }}st{% when "2" or "22" %}{{ d }}nd{% when "3" or "23" %}{{ d }}rd{% else %}{{ d }}th{% endcase %},
-          {{ page.date | date: "%Y" }}
-        </div>
+      <div class="post-image{% if page.image_float_position %} post-image-float-{{ page.image_float_position }}{% endif %}">
+        <img src="{{ page.image }}" alt="" width="512" />
       </div>
 
-      <div class="post-content">
-        {% if page.image %}
-          {% assign paragraphs = content | split: '</p>' %}
-          {% assign insert_after = page.image_insert_order | default: 1 %}
-          {% for paragraph in paragraphs limit:insert_after %}
-            {{ paragraph }}</p>
-          {% endfor %}
+      {% for paragraph in paragraphs offset:insert_after %}
+        {{ paragraph }}</p>
+      {% endfor %}
+    {% else %}
+      {{ content }}
+    {% endif %}
+  </div>
+</article>
 
-          <div class="post-image{% if page.image_float_position %} post-image-float-{{ page.image_float_position }}{% endif %}">
-            <img src="{{ page.image }}" alt="{{ page.title }}" width="512" />
-          </div>
-
-          {% for paragraph in paragraphs offset:insert_after %}
-            {{ paragraph }}</p>
-          {% endfor %}
-        {% else %}
-          {{ content }}
-        {% endif %}
-      </div>
-    </div>
-
-    {% include about.html %}
-{% include footer.html %}
+{% if page.previous or page.next %}
+  <nav class="post-nav" aria-label="More notes">
+    {% if page.previous %}
+      <a class="post-nav-older" href="{{ page.previous.url }}">
+        <span class="post-nav-label">Older</span>
+        {{ page.previous.title }}
+      </a>
+    {% endif %}
+    {% if page.next %}
+      <a class="post-nav-newer" href="{{ page.next.url }}">
+        <span class="post-nav-label">Newer</span>
+        {{ page.next.title }}
+      </a>
+    {% endif %}
+  </nav>
+{% endif %}

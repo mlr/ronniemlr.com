@@ -1,0 +1,3 @@
+{% comment %}Sets kind and minutes for include.post.{% endcomment %}
+{% assign kind = include.post.kind | default: "write-up" %}
+{% assign minutes = include.post.content | strip_html | number_of_words | plus: 110 | divided_by: 220 %}{% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}

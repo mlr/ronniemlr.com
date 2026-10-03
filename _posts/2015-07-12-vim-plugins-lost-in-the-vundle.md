@@ -1,5 +1,7 @@
 ---
 title: Vim plugins lost in the Vundle
+summary: 'An audit of four Vim plugins I installed and never used: vim-seek, argumentative, exchange, and expand-region.'
+topics: [Command line and Git]
 ---
 
 Once in a while I try to audit my vim configuration, plugins, etc. Although I try

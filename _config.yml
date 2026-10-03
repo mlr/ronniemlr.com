@@ -1,6 +1,7 @@
 title: Ronnie Miller
 url: https://ronniemlr.com
-description: Ronnie Miller is a software developer located in Portland, OR. He uses Ruby, Rails and React to deliver powerful web applications and small business software tools.
+description: Ronnie Miller is a product-minded software engineer on California's Redwood Coast. Partner and CTO at KABI Automotive and founder of BuildTestRun. Notes on Ruby, Rails, AWS, and the things he builds.
+consulting_url: https://buildtest.run
 keywords: Ronnie Miller, software, developer, web developer, software engineer, consultant, ruby, ruby on rails, jquery, react, postgresql, mysql
 author:
   name: Ronnie Miller
@@ -19,6 +20,9 @@ exclude:
   - Rakefile
   - README.md
   - s3_website.yml
+  - Profile.pdf
+  - node_modules
+  - vendor
 defaults:
   -
     scope:

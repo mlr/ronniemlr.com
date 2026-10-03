@@ -1,5 +1,7 @@
 ---
 title: Slack bot for API Documentation
+summary: 'A Slack bot that answers with API documentation and sample responses built from a JSON schema.'
+topics: [Integrations]
 ---
 
 The number of Slack bots, Slack plug-ins and other integrations available

@@ -1,20 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-{% include head.html %}
-</head>
+<header class="site-header">
+  <a class="site-name" href="/">Ronnie Miller</a>
 
-<body>
-<div id="wrapper"{% if page.name %} class="{{ page.name | split: '.' | first }}"{% endif %}>
-  <header>
-    <div id="name"><a href="/">Ronnie Miller</a></div>
-    <nav>
-      <ul>
-        <li{% if page.url == '/index.html' or page.url contains '/201' %} class="active"{% endif %}><a href="/">Notes</a></li>
-        <li{% if page.url contains '/work/'   %} class="active"{% endif %}><a href="/work">Work</a></li>
-        <li{% if page.url contains '/resume/' %} class="active"{% endif %}><a href="/resume">Resume</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <div id="container">
+  <nav class="site-nav" aria-label="Main">
+    <ul>
+      <li><a href="/"{% if is_home %} aria-current="page"{% elsif page.layout == "blog" %} class="is-active"{% endif %}>notes</a></li>
+      <li><a href="/work/"{% if page.url contains '/work/' %} aria-current="page"{% endif %}>work</a></li>
+      <li><a href="/resume/"{% if page.url contains '/resume/' %} aria-current="page"{% endif %}>resume</a></li>
+    </ul>
+    <a class="site-hire" href="{{ site.consulting_url }}">work with me</a>
+  </nav>
+</header>

@@ -1,13 +1,62 @@
-  </div>
+<footer class="site-footer">
+  <ul class="footer-social">
+    <li><a href="https://github.com/mlr" class="social-icon" aria-label="GitHub" title="GitHub"><span aria-hidden="true">circlegithubalt</span></a></li>
+    <li><a href="https://linkedin.com/in/ronniemlr" class="social-icon" aria-label="LinkedIn" title="LinkedIn"><span aria-hidden="true">circlelinkedin</span></a></li>
+    <li><a href="https://youtube.com/@BuildAtScale" class="social-icon" aria-label="YouTube" title="YouTube"><span aria-hidden="true">circleyoutube</span></a></li>
+    <li><a href="/{{ site.feed.path }}" class="social-icon" aria-label="RSS feed" title="RSS feed"><span aria-hidden="true">circlerss</span></a></li>
+  </ul>
 
-  <footer>
-    <ul id="profiles">
-      <li><a href="http://github.com/mlr" class="symbol">circlegithubalt</span></a></li>
-      <li><a href="http://linkedin.com/in/ronniemlr" class="symbol">circlelinkedin</span></a></li>
-      <li><a href="/{{ site.feed.path }}" class="symbol">circlerss</span></a></li>
-    </ul>
-  </footer>
-</div>
-{% include google_ga.html %}
-</body>
-</html>
+  <button type="button" class="theme-toggle" data-choice="system" aria-label="Color theme: system. Switch to light." title="Theme: system" hidden>
+    <svg class="theme-icon theme-icon--light" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    <svg class="theme-icon theme-icon--dark" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg>
+    <svg class="theme-icon theme-icon--system" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+  </button>
+</footer>
+
+<script>
+  // Theme toggle: one button that steps system -> light -> dark -> system.
+  // "system" removes the override so CSS follows prefers-color-scheme.
+  (function () {
+    var root = document.documentElement;
+    var button = document.querySelector(".theme-toggle");
+    if (!button) return;
+    var order = ["system", "light", "dark"];
+
+    function next(choice) {
+      return order[(order.indexOf(choice) + 1) % order.length];
+    }
+
+    function show(choice) {
+      button.setAttribute("data-choice", choice);
+      button.setAttribute("aria-label", "Color theme: " + choice + ". Switch to " + next(choice) + ".");
+      button.setAttribute("title", "Theme: " + choice);
+    }
+
+    function apply(choice) {
+      if (choice === "system") {
+        root.removeAttribute("data-theme");
+      } else {
+        root.setAttribute("data-theme", choice);
+      }
+      try {
+        if (choice === "system") {
+          localStorage.removeItem("theme");
+        } else {
+          localStorage.setItem("theme", choice);
+        }
+      } catch (e) {}
+      show(choice);
+    }
+
+    button.addEventListener("click", function () {
+      apply(next(button.getAttribute("data-choice")));
+      // Restart the turn animation on the new icon.
+      button.classList.remove("is-turning");
+      void button.offsetWidth;
+      button.classList.add("is-turning");
+    });
+
+    show(root.getAttribute("data-theme") || "system");
+    button.hidden = false;
+  })();
+</script>

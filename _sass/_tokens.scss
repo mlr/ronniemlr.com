@@ -1,0 +1,72 @@
+// Color tokens. Light is the default; dark applies when the system asks for it
+// (unless the reader picked "Light") or when the reader picked "Dark".
+
+$font-sans: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+$font-mono: "JetBrains Mono", ui-monospace, Menlo, Monaco, monospace;
+
+$cyan: #0DCDDE;
+$charcoal: #252525;
+
+:root {
+  color-scheme: light;
+
+  --bg: #FAFAFA;
+  --text: #{$charcoal};
+  --text-2: #555555;
+  --text-3: #6B6B6B;
+  --link: #00727D;
+  --line: #{$cyan};
+  --rule: #E3E3E3;
+  --surface: #EFEFEF;
+  --button-bg: #{$charcoal};
+  --button-text: #FAFAFA;
+
+  --syn-bg: #F1F1F1;
+  --syn-text: #24292F;
+  --syn-comment: #6A737D;
+  --syn-keyword: #CF222E;
+  --syn-string: #0A3069;
+  --syn-number: #0550AE;
+  --syn-function: #8250DF;
+  --syn-constant: #953800;
+  --syn-variable: #116329;
+  --syn-inserted-bg: #E6FFEC;
+  --syn-deleted-bg: #FFEBE9;
+}
+
+@mixin dark-tokens {
+  color-scheme: dark;
+
+  --bg: #{$charcoal};
+  --text: #E1E1E1;
+  --text-2: #B5B5B5;
+  --text-3: #9A9A9A;
+  --link: #{$cyan};
+  --line: #{$cyan};
+  --rule: #3A3A3A;
+  --surface: #1C1C1C;
+  --button-bg: #{$cyan};
+  --button-text: #{$charcoal};
+
+  --syn-bg: #1C1C1C;
+  --syn-text: #E6E1DC;
+  --syn-comment: #BC9458;
+  --syn-keyword: #CC7833;
+  --syn-string: #A5C261;
+  --syn-number: #A5C261;
+  --syn-function: #FFC66D;
+  --syn-constant: #7BA5C4;
+  --syn-variable: #D0D0FF;
+  --syn-inserted-bg: #144212;
+  --syn-deleted-bg: #600000;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    @include dark-tokens;
+  }
+}
+
+:root[data-theme="dark"] {
+  @include dark-tokens;
+}

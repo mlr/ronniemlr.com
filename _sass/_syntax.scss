@@ -1,134 +1,81 @@
-/* RailsCasts syntax highlighting */
-.highlight,.highlight pre,.highlight table{background:#2B2B2B!important;color:#E6E1DC!important;}
-.highlight .hll{background-color:#ffc!important;}
-.highlight .gd{color:#E6E1DC!important;background-color:#600!important;}
-.highlight .gr{color:#FFF!important;background-color:#900!important;}
-.highlight .gi{color:#E6E1DC!important;background-color:#144212!important;}
-.highlight .kt{color:#DA4939!important;}
-.highlight .no{color:#7BA5C4!important;}
-.highlight .c,.highlight .cm,.highlight .c1,.highlight .cs{color:#BC9458!important;font-style:italic!important;}
-.highlight .err,.highlight .g,.highlight .l,.highlight .n,.highlight .o,.highlight .x,.highlight .p,.highlight .ge,
-.highlight .go,.highlight .gp,.highlight .gs,.highlight .gt,.highlight .ld,.highlight .nb,.highlight .nc,.highlight .nd,
-.highlight .ni,.highlight .ne,.highlight .nl,.highlight .nn,.highlight .nx,.highlight .py,.highlight .ow,.highlight .w,
-.highlight .bp{color:#E6E1DC!important;}
-.highlight .k,.highlight .cp,.highlight .kc,.highlight .kd,.highlight .kn,.highlight .kp,.highlight .kr,
-.highlight .nt{color:#CC7833!important;}
-.highlight .gh,.highlight .gu{color:#FFF!important;}
-.highlight .m,.highlight .s,.highlight .mf,.highlight .mh,.highlight .mi,.highlight .mo,.highlight .sb,.highlight .sc,
-.highlight .sd,.highlight .s2,.highlight .se,.highlight .sh,.highlight .si,.highlight .sx,.highlight .sr,.highlight .s1,
-.highlight .ss,.highlight .il{color:#A5C261!important;}
-.highlight .na,.highlight .nf{color:#FFC66D!important;}
-.highlight .nv,.highlight .vc,.highlight .vg,.highlight .vi{color:#D0D0FF!important;}
+// Rouge syntax colors. Values come from the theme tokens.
 
-.l-Scalar-Plain {
-  color: #B9574C;
-}
-
-.p-Indicator {
-  color: #86C1B8;
-}
-
-table.highlighttable, .highlight, .highlight pre {
-  border-radius: 5px;
-  background: #2B2B2B;
-  width: 100%;
-  padding: 0;
-}
-
-.highlighttable .linenos {
-  width: 24px;
-}
-
-.highlighttable pre {
-  line-height: 1.3em;
-  color: #888;
-  padding: 0;
-  margin: 0;
-}
-
-.linenos, td.code {
-  border-bottom: none;
-  padding: 0;
-  margin: 0;
-}
-
+.highlighter-rouge .highlight,
 .highlight pre {
-  display: block;
+  background: var(--syn-bg);
+}
+
+div.highlight {
+  border-radius: 6px;
+}
+
+.highlight {
+  color: var(--syn-text);
+
+  .c, .ch, .cm, .c1, .cs, .cd {
+    color: var(--syn-comment);
+    font-style: italic;
+  }
+
+  .k, .kc, .kd, .kn, .kp, .kr, .ow, .nt, .cp {
+    color: var(--syn-keyword);
+  }
+
+  .s, .s1, .s2, .sa, .sb, .sc, .sd, .se, .sh, .si, .sx, .sr, .ss, .dl {
+    color: var(--syn-string);
+  }
+
+  .m, .mb, .mf, .mh, .mi, .mo, .il {
+    color: var(--syn-number);
+  }
+
+  .nf, .fm, .na, .nd {
+    color: var(--syn-function);
+  }
+
+  .no, .nc, .nn, .kt, .bp, .nb {
+    color: var(--syn-constant);
+  }
+
+  .nv, .vc, .vg, .vi {
+    color: var(--syn-variable);
+  }
+
+  .gi {
+    background: var(--syn-inserted-bg);
+  }
+
+  .gd {
+    background: var(--syn-deleted-bg);
+  }
+
+  .gh, .gu {
+    font-weight: 700;
+  }
+
+  .err {
+    color: var(--syn-text);
+  }
+}
+
+// Line-numbered blocks ({% highlight lang linenos %}) render as a table.
+.rouge-table {
   width: auto;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-  white-space: pre;
-  word-wrap: normal;
-}
+  margin: 0;
+  border-collapse: collapse;
+  font-size: inherit;
 
-:not(pre) > code {
-  border-radius: 4px;
-  border: 1px solid #a0a0a0;
-  background: $darker-gray;
-  color: $font-color;
-
-  margin: 0 1px 0 2px;
-  padding: 3px 5px 3px 6px;
-  position: relative;
-  top: -1px;
-}
-
-figure {
-  margin: 0px;
-
-  code {
-    table {
-      margin-bottom: 0px;
-
-      td.gutter, pre {
-        padding: 0px;
-        margin: 0px;
-      }
-
-      td.gutter {
-        padding-right: 15px;
-        border: none;
-      }
-    }
+  td {
+    padding: 0;
+    border: 0;
+    vertical-align: top;
   }
 
-  code, pre, span {
-    font-family: Monaco, Consolas, monospace;
-    font-size: 14px;
-  }
-
-  figcaption + table.highlighttable {
-    margin-top: 10px;
-  }
-
-  &.vscroll {
-    .highlight code {
-      max-height: 250px;
-    }
-
-    .highlight code:after {
-      line-height: 10px;
-      display: block;
-      content: "\A";
-    }
-  }
-}
-
-figcaption {
-  margin: -5px 0 -10px;
-  font-size: 1.35rem;
-
-  font-family: Consolas, monospace;
-  color: #888;
-}
-
-@media (max-width: $larger-than-tablet) {
-  td.code {
-    max-width: $larger-than-tablet - $larger-than-phablet;
-  }
-
-  code {
-    word-wrap: nowrap !important;
-    display: inline-block;
+  .gutter,
+  .rouge-gutter {
+    padding-right: 1.25rem;
+    color: var(--text-3);
+    text-align: right;
+    user-select: none;
   }
 }

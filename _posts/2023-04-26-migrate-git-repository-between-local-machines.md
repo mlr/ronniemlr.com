@@ -1,6 +1,8 @@
 ---
 title: Migrate a Git Repository between Local Machines
 tags: git, migration
+summary: 'Clone a repository straight from your old Mac over SSH to keep every branch and leave the clutter behind.'
+topics: [Command line and Git]
 ---
 
 Something you might encounter when migrating to a new machine:

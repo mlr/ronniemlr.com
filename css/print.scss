@@ -1,19 +1,118 @@
 ---
 ---
 
-html, body {
-  background: #fff;
+@import "tokens";
+
+// Print in light colors, whatever theme is on screen.
+:root,
+:root:not([data-theme="light"]),
+:root[data-theme="dark"] {
+  --bg: #FFFFFF;
+  --text: #000000;
+  --text-2: #333333;
+  --text-3: #555555;
+  --link: #000000;
+  --line: #9A9A9A;
+  --rule: #CCCCCC;
+  --syn-bg: #F5F5F5;
+  --syn-text: #000000;
+  color-scheme: light;
 }
 
-body {
-  margin-top: 50px;
+@page {
+  margin: 0.6in;
 }
 
-body, * {
-  color: #222 !important;
+// The layout is sized in rem, so a smaller root size scales the whole page for paper.
+html {
+  font-size: 12px;
 }
 
-div {
-  width: 100%;
-  max-width: 100%;
+.timeline,
+.timeline-item,
+.stream,
+.entry {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+// Leave room for the dots, which sit half outside the line.
+.timeline,
+.stream {
+  margin-left: 6px;
+}
+
+.wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+.skip-link,
+.site-nav,
+.site-footer,
+.post-nav {
+  display: none !important;
+}
+
+.site-header {
+  padding: 0;
+  margin-bottom: 0.75rem;
+}
+
+.site-name {
+  font-size: 22pt;
+}
+
+a {
+  text-decoration: none;
+}
+
+pre {
+  white-space: pre-wrap;
+}
+
+h2, h3,
+.timeline-when,
+.job-role {
+  break-after: avoid;
+}
+
+li {
+  break-inside: avoid;
+}
+
+// The resume prints with the name from the header, so "Resume" is not needed.
+.page-resume .page-title {
+  display: none;
+}
+
+.page-resume .resume-summary {
+  max-width: none;
+  font-size: 1.125rem;
+}
+
+.page-resume .resume-contact {
+  margin-bottom: 1.5rem;
+}
+
+.page-resume .resume-heading {
+  margin-bottom: 1rem;
+}
+
+.page-resume .timeline-item {
+  padding-bottom: 1rem;
+}
+
+.page-resume .job-highlights {
+  margin-top: 0.375rem;
+
+  li + li {
+    margin-top: 0.125rem;
+  }
+}
+
+.page-resume .resume-details {
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+  padding-top: 0.75rem;
 }

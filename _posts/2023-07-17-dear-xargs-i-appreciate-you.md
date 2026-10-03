@@ -12,6 +12,8 @@ description: >
 keywords: xargs, command-line hero, Unix magic, fan letter, appreciation, jq, command-line, brilliance, devoted fan, perfect pair, Unix enchantment
 image: /images/banner/dear-xargs-i-appreciate-you.png
 image_insert_order: 2 # number of paragraphs after which the image will be inserted
+summary: 'A thank-you letter to xargs, with examples for images, logs, and jq.'
+topics: [Command line and Git]
 ---
 
 Dear xargs,

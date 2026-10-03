@@ -1,0 +1,12 @@
+# Topics for the notes archive. The home page lists them by number of entries,
+# largest first; when two topics have the same number, this file's order wins.
+# Each post lists its topics in front matter, for example: topics: [AWS, Databases]
+- Ruby and Rails
+- AWS
+- Databases
+- Command line and Git
+- JavaScript
+- Python and data
+- Integrations
+- Rust
+- This site

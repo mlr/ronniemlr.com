@@ -1,3 +1,9 @@
+---
+title: Make Me A Workflow
+summary: 'The prompt I gave GPT to write this site''s GitHub Actions deploy workflow, and what I changed after.'
+topics: [This site]
+---
+
 ````text
 You're a professional ruby engineer and CI/CD dev ops engineer.
 Create a Github actions file that will run `bundle exec rake deploy`.
@@ -52,6 +58,7 @@ Your script:
 
 Here's a possible Github Actions file that will run bundle exec rake deploy:
 
+{% raw %}
 ```
 name: Deploy to S3
 on:
@@ -79,6 +86,7 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       run: bundle exec rake deploy
 ```
+{% endraw %}
 
 The name field describes the name of the Github Actions workflow. In this case,
 it's "Deploy to S3".

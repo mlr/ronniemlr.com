@@ -2,6 +2,8 @@
 title: Becoming Friends with Pandas
 subtitle: Exploring CSV Data with Pandas and Jupyter Notebooks
 tags: python, pandas, jupyter-notebook, csv
+summary: 'Reading, analyzing, and changing CSV data with Pandas in a Jupyter notebook.'
+topics: [Python and data]
 ---
 
 [Pandas](https://pandas.pydata.org/) is a Python library for data analysis and manipulation, providing tools for working with structured data. It is widely used in data science and other fields where data analysis and manipulation are important.

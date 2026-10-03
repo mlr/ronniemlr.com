@@ -1,5 +1,7 @@
 ---
 title: Trying out new features of Ruby 2.2
+summary: 'Ruby 2.2 shipped on Christmas with symbol garbage collection. I try out `Enumerable#slice_after` and `slice_when`.'
+topics: [Ruby and Rails]
 ---
 
 The Ruby core team shipped an awesome new version &ndash;

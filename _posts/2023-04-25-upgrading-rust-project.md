@@ -2,6 +2,8 @@
 title: Upgrading a Rust Project
 subtitle: Stepping through minor upgrade issues
 tags: rust, cargo
+summary: 'Upgrading a Rust CLI from 1.46 to 1.65 for Apple Silicon: one stale rusoto crate, then a Tokio runtime panic.'
+topics: [Rust]
 ---
 
 I was having an issue when upgrading a Rust project from 1.46 to 1.65.

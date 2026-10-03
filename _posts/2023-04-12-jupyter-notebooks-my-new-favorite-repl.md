@@ -1,5 +1,7 @@
 ---
 title: Jupyter Notebooks&colon; My New Favorite REPL
+summary: 'Jupyter Notebooks as a REPL: what they are, why they are useful, and a short example.'
+topics: [Python and data]
 ---
 
 As a web developer, I've been familiar with Python for many years, particularly in the context of web development. However, recently, while exploring Python libraries and tools and learning about Language Models (LLMs) and Generative AI, I really came to appreciate the power of Jupyter Notebooks. Although I had seen them before I never really tried them. They have proven to be extremely helpful when trying to grasp new Python concepts.

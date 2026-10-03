@@ -3,4 +3,7 @@ title:
 permalink: index.html
 ---
 
-{% include blog_post_links.html %}
+{% include intro.html %}
+{% include home/latest.html %}
+{% include home/recent.html %}
+{% include home/archive.html %}

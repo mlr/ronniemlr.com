@@ -1,0 +1,110 @@
+// The same footer on every page: social icons at the left, theme switcher at the right.
+
+// Social icons from the original site. The font draws each icon from a ligature
+// ("circlegithubalt", "circlelinkedin", "circlerss").
+@font-face {
+  font-family: "Mono Social Icons Font";
+  src: url("MonoSocialIconsFont-1.10.woff") format("woff"),
+       url("MonoSocialIconsFont-1.10.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem 1.5rem;
+  margin-top: 5rem;
+  padding: 1.5rem 0 2.5rem;
+  border-top: 1px solid var(--rule);
+}
+
+.footer-social {
+  display: flex;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.social-icon {
+  display: block;
+  color: var(--text-3);
+  font-family: "Mono Social Icons Font";
+  font-size: 2.25rem;
+  line-height: 1;
+  text-decoration: none;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "liga" 1;
+  -webkit-font-smoothing: antialiased;
+
+  &:hover {
+    color: var(--link);
+    text-decoration: none;
+  }
+}
+
+// One button that shows the current theme and steps to the next one on click.
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  width: 1.875rem;   // matches the rendered size of the social icons
+  height: 1.875rem;
+  padding: 0;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+  background: none;
+  color: var(--text-2);
+  cursor: pointer;
+
+  &[hidden] {
+    display: none;
+  }
+
+  &:hover {
+    border-color: var(--text-3);
+    color: var(--text);
+  }
+}
+
+.theme-icon {
+  display: none;
+  width: 1rem;
+  height: 1rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.theme-toggle[data-choice="light"] .theme-icon--light,
+.theme-toggle[data-choice="dark"] .theme-icon--dark,
+.theme-toggle[data-choice="system"] .theme-icon--system {
+  display: block;
+}
+
+.theme-toggle.is-turning .theme-icon {
+  animation: theme-turn 320ms cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+@keyframes theme-turn {
+  from {
+    transform: rotate(-120deg) scale(0.6);
+    opacity: 0;
+  }
+
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle.is-turning .theme-icon {
+    animation: none;
+  }
+}

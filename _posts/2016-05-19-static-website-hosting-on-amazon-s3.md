@@ -1,5 +1,7 @@
 ---
 title: Static Website Hosting on Amazon S3
+summary: 'Why I moved this site from GitHub Pages to Amazon S3, and how I set up the bucket and deploys.'
+topics: [AWS, This site]
 ---
 
 ## Goodbye GitHub Pages

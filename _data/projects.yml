@@ -1,0 +1,30 @@
+# Products shown on the work page, in this order. `description` is Markdown.
+# `formerly` shows a product's earlier name next to its link.
+
+- name: ShopLoader
+  url: https://shop-loader.com
+  description: >-
+    SaaS application built with Ruby on Rails for automotive service departments.
+    Manages and schedules long-term repair work, and dispatches jobs against each
+    technician's availability so the shop doesn't have to guess.
+
+- name: WorksTiming
+  url: https://www.workstiming.com
+  description: >-
+    SaaS application built using Ruby on Rails. Designed to simplify operations and
+    increase job throughput for automotive maintenance shops. Provides live-updating
+    customer and shop display boards for better shop visibility.
+
+- name: SettleDue
+  formerly: MyInvoicer
+  url: https://settledue.com
+  description: >-
+    Invoicing for freelancers, consultants, and contractors. Bill by the hour, by the
+    project, or on retainer, and turn the work into clean, professional invoices.
+
+- name: Betting Bad
+  description: >-
+    Online trivia game that allowed fans to predict the outcome of the television
+    series _Breaking Bad_. The [promo](https://www.youtube.com/watch?v=LO2aC_UMXMo)
+    [videos](https://www.youtube.com/watch?v=ovlK-WXJ-pQ) were featured on
+    [Boing Boing](http://boingboing.net/2013/07/16/nine-minute-breaking-bad-super.html).
