@@ -12,14 +12,11 @@
       } catch (e) {}
     })();
   </script>
-  <title>{% if page.title %}{{ page.title }} - {% endif %}Ronnie Miller - Software Developer</title>
-  <meta name="robots" content="index, follow" />
-  <meta name="description" content="{% if page.description %}{{ page.description | strip_newlines }} - {% endif %}{{ site.description }}" />
-  <meta name="keywords" content="{% if page.keywords %}{{ page.keywords | strip_newlines }}, {% endif %}{{ site.keywords }}" />
-  <meta property="og:title" content="{% if page.title %}{{ page.title }} - {% endif %}Ronnie Miller - Software Developer" />
-  <meta property="og:description" content="{% if page.description %}{{ page.description | strip_newlines }} - {% endif %}{{ site.description }}" />
-  <meta property="og:image" content="{{ site.url }}{% if page.image %}{{ page.image }}{% else %}/images/me.jpg{% endif %}" />
+{% include seo.html %}
+  <meta name="theme-color" content="#FAFAFA" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#252525" media="(prefers-color-scheme: dark)" />
   <link rel="icon" href="{{ site.baseurl }}/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="{{ site.baseurl }}/apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" />

@@ -1,12 +1,19 @@
 title: Ronnie Miller
-url: https://ronniemlr.com
-description: Ronnie Miller is a product-minded software engineer on California's Redwood Coast. Partner and CTO at KABI Automotive and founder of BuildTestRun. Notes on Ruby, Rails, AWS, and the things he builds.
+tagline: Product-minded software engineer
+url: https://ronniemiller.com
+description: Ronnie Miller is a product-minded software engineer, Partner and CTO of KABI Automotive, and founder of BuildTestRun. Notes on Rails, AWS, and AI agents.
 consulting_url: https://buildtest.run
-keywords: Ronnie Miller, software, developer, web developer, software engineer, consultant, ruby, ruby on rails, jquery, react, postgresql, mysql
+# Default image for link previews. Posts with an `image:` use their own.
+og_image: /images/og/default.png
+# Profiles that belong to the same person, for the JSON-LD `sameAs` list.
+social:
+  - https://github.com/mlr
+  - https://www.linkedin.com/in/ronniemlr
+  - https://www.youtube.com/@BuildAtScale
 author:
   name: Ronnie Miller
   email: me@ronniemlr.com
-  uri: http://ronniemlr.com
+  uri: https://ronniemiller.com
 permalink: pretty
 redirects: yes
 feed:

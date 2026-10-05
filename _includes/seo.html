@@ -1,0 +1,146 @@
+{%- comment -%}
+  Search and link-preview tags, and the JSON-LD graph.
+  Every URL is absolute and built from site.url, so ronniemiller.com is the canonical domain.
+{%- endcomment -%}
+{%- assign seo_is_home = false -%}
+{%- if page.url == "/" or page.url == "/index.html" -%}{%- assign seo_is_home = true -%}{%- endif -%}
+{%- assign seo_is_post = false -%}
+{%- if page.collection == "posts" -%}{%- assign seo_is_post = true -%}{%- endif -%}
+{%- assign seo_is_profile = false -%}
+{%- if seo_is_home or page.url contains "/resume/" -%}{%- assign seo_is_profile = true -%}{%- endif -%}
+
+{%- if seo_is_home -%}
+  {%- assign seo_title = site.title | append: " - " | append: site.tagline -%}
+{%- else -%}
+  {%- assign seo_title = page.title | append: " - " | append: site.title -%}
+{%- endif -%}
+
+{%- assign seo_description = page.summary | default: page.description -%}
+{%- if seo_description == nil or seo_description == "" -%}
+  {%- if seo_is_post -%}{%- assign seo_description = page.excerpt -%}{%- else -%}{%- assign seo_description = site.description -%}{%- endif -%}
+{%- endif -%}
+{%- assign seo_description = seo_description | strip_html | normalize_whitespace | strip | truncate: 160 -%}
+
+{%- assign seo_root = "/" | absolute_url -%}
+{%- assign seo_url = page.url | replace: "index.html", "" | absolute_url -%}
+{%- assign seo_image = page.image | default: site.og_image | absolute_url -%}
+  <title>{{ seo_title | escape }}</title>
+  <meta name="description" content="{{ seo_description | escape }}" />
+  <meta name="author" content="{{ site.author.name }}" />
+  <link rel="canonical" href="{{ seo_url }}" />
+  <meta property="og:site_name" content="{{ site.title }}" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="{% if seo_is_post %}article{% elsif page.url contains '/resume/' %}profile{% else %}website{% endif %}" />
+  <meta property="og:title" content="{% if seo_is_home %}{{ seo_title | escape }}{% else %}{{ page.title | escape }}{% endif %}" />
+  <meta property="og:description" content="{{ seo_description | escape }}" />
+  <meta property="og:url" content="{{ seo_url }}" />
+  <meta property="og:image" content="{{ seo_image }}" />
+{%- unless page.image %}
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+{%- endunless %}
+  <meta property="og:image:alt" content="{% if page.image %}{{ page.title | escape }}{% else %}{{ site.title }}, {{ site.tagline | downcase }}{% endif %}" />
+{%- if seo_is_post %}
+  <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}" />
+{%- if page.last_modified_at %}
+  <meta property="article:modified_time" content="{{ page.last_modified_at | date_to_xmlschema }}" />
+{%- endif %}
+  <meta property="article:author" content="{{ seo_root }}" />
+{%- for topic in page.topics %}
+  <meta property="article:tag" content="{{ topic | escape }}" />
+{%- endfor %}
+{%- endif %}
+{%- if page.url contains "/resume/" %}
+  <meta property="profile:first_name" content="Ronnie" />
+  <meta property="profile:last_name" content="Miller" />
+{%- endif %}
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "{{ seo_root }}#person",
+        "name": {{ site.author.name | jsonify }},
+        "url": "{{ seo_root }}",
+        "image": "{{ '/images/me.jpg' | absolute_url }}",
+        "description": {{ site.description | jsonify }},
+        "jobTitle": "Partner and CTO",
+        "worksFor": [
+          { "@type": "Organization", "name": "KABI Automotive", "url": "https://kabiauto.com" },
+          { "@type": "Organization", "name": "BuildTestRun", "url": "https://buildtest.run" }
+        ],
+        "knowsAbout": ["Ruby on Rails", "Amazon Web Services", "Cloud infrastructure", "AI agents", "Software security"],
+        "sameAs": {{ site.social | jsonify }}
+      },
+      {
+        "@type": "WebSite",
+        "@id": "{{ seo_root }}#website",
+        "url": "{{ seo_root }}",
+        "name": {{ site.title | jsonify }},
+        "description": {{ site.description | jsonify }},
+        "inLanguage": "en-US",
+        "publisher": { "@id": "{{ seo_root }}#person" }
+      }
+{%- if seo_is_post %},
+      {
+        "@type": "BlogPosting",
+        "@id": "{{ seo_url }}#article",
+        "headline": {{ page.title | jsonify }},
+        "description": {{ seo_description | jsonify }},
+        "url": "{{ seo_url }}",
+        "mainEntityOfPage": "{{ seo_url }}",
+        "datePublished": "{{ page.date | date_to_xmlschema }}",
+        "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
+        "image": "{{ seo_image }}",
+        "keywords": {{ page.topics | join: ", " | jsonify }},
+        "inLanguage": "en-US",
+        "author": { "@id": "{{ seo_root }}#person" },
+        "publisher": { "@id": "{{ seo_root }}#person" },
+        "isPartOf": { "@id": "{{ seo_root }}#website" }
+      }
+{%- elsif seo_is_profile %},
+      {
+        "@type": "ProfilePage",
+        "@id": "{{ seo_url }}#page",
+        "url": "{{ seo_url }}",
+        "name": {{ seo_title | jsonify }},
+        "description": {{ seo_description | jsonify }},
+        "mainEntity": { "@id": "{{ seo_root }}#person" },
+        "isPartOf": { "@id": "{{ seo_root }}#website" }
+      }
+{%- elsif page.url contains "/work/" %},
+      {
+        "@type": "CollectionPage",
+        "@id": "{{ seo_url }}#page",
+        "url": "{{ seo_url }}",
+        "name": {{ seo_title | jsonify }},
+        "description": {{ seo_description | jsonify }},
+        "about": { "@id": "{{ seo_root }}#person" },
+        "isPartOf": { "@id": "{{ seo_root }}#website" },
+        "mainEntity": {
+          "@type": "ItemList",
+          "itemListElement": [
+{%- for project in site.data.projects %}
+            {
+              "@type": "ListItem",
+              "position": {{ forloop.index }},
+              "item": {
+                "@type": "CreativeWork",
+                "name": {{ project.name | jsonify }},
+{%- if project.url %}
+                "url": {{ project.url | jsonify }},
+{%- endif %}
+                "description": {{ project.description | markdownify | strip_html | normalize_whitespace | strip | jsonify }},
+                "creator": { "@id": "{{ seo_root }}#person" }
+              }
+            }{% unless forloop.last %},{% endunless %}
+{%- endfor %}
+          ]
+        }
+      }
+{%- endif %}
+    ]
+  }
+  </script>
